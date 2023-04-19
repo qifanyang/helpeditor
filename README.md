@@ -18,7 +18,7 @@ helpeditor
 
 #### 运行程序
 
-程序入口: com/help/HelpEditor.java
+程序入口: **com/help/HelpEditor.java**
 
-效果展示(默认打开仓库中的文件help.cfg):
+游戏帮助文档效果展示(默认打开仓库中的文件help.cfg):
 ![image](src/com/help/res/helptest1.png)
