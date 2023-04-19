@@ -18,9 +18,9 @@ public class HelpNode {
     /**
      * 
      * @param name
-     *            ½ÚµãÃû³Æ
+     *            èŠ‚ç‚¹åç§°
      * @param type
-     *            ½ÚµãÀàĞÍ£¬1-±íÊ¾Ê÷½Úµã£¬2-±íÊ¾Ò¶½Úµã
+     *            èŠ‚ç‚¹ç±»å‹ï¼Œ1-è¡¨ç¤ºæ ‘èŠ‚ç‚¹ï¼Œ2-è¡¨ç¤ºå¶èŠ‚ç‚¹
      */
     public HelpNode(String name, int type) {
 	parentNode = null;

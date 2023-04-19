@@ -8,7 +8,7 @@ import javax.swing.tree.TreeNode;
 
 public class CustomTreeNode extends DefaultMutableTreeNode {
 	public static final String loadFlag = "loading...";
-	public static final String noFlag = "ÎŞÄÚÈİ...";
+	public static final String noFlag = "æ— å†…å®¹...";
 
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +17,7 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 	}
 
 	/**
-	 * ¸ù¾İÄ¿Â¼Ãû×ÖcatalogName£¬Ìí¼ÓÄ¿Â¼½Úµã
+	 * æ ¹æ®ç›®å½•åå­—catalogNameï¼Œæ·»åŠ ç›®å½•èŠ‚ç‚¹
 	 * 
 	 * @param catalogName
 	 */
@@ -25,24 +25,24 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 		CustomTreeNode depotNode = null;
 		if (catalogName != null) {
 			if (catalogName.length() == 0) {// JDK6 use result.isEmpty()
-				JOptionPane.showMessageDialog((Component) getParent(), "Ä¿Â¼Ãû²»ÄÜÎª¿Õ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog((Component) getParent(), "ç›®å½•åä¸èƒ½ä¸ºç©º ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 			} else {
 				// TreePath selectionPath = getSelectionPath();
 				// DefaultMutableTreeNode lastPathComponent =
 				// (DefaultMutableTreeNode)
 				// selectionPath.getLastPathComponent();
 				int childCount = this.getChildCount();
-				// ±éÀú ¼ì²éÊÇ·ñÓĞÖØÃû
+				// éå† æ£€æŸ¥æ˜¯å¦æœ‰é‡å
 				for (int i = 0; i < childCount; i++) {
 					TreeNode child = this.getChildAt(i);
 					if (child.toString().equalsIgnoreCase(catalogName)) {
-						JOptionPane.showMessageDialog((Component) getParent(), "¸ÃÄ¿Â¼Ãû³ÆÒÑ¾­´æÔÚ£¬ÁíÃüÃû £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog((Component) getParent(), "è¯¥ç›®å½•åç§°å·²ç»å­˜åœ¨ï¼Œå¦å‘½å ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 						return null;
 					}
 
 				}
 				checkChildNode(this);
-				// Æ´½ÓtreePath
+				// æ‹¼æ¥treePath
 				Object[] nodePath = getPath();
 				StringBuilder path = new StringBuilder();
 				for (int i = 0; i < nodePath.length; i++) {
@@ -58,7 +58,7 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 		if (depotNode != null) {
 			return depotNode;
 		} else {
-			throw new NullPointerException("´´½¨Ä¿Â¼½ÚµãÊ§°Ü £¡");
+			throw new NullPointerException("åˆ›å»ºç›®å½•èŠ‚ç‚¹å¤±è´¥ ï¼");
 		}
 	}
 
@@ -66,19 +66,19 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 		CustomTreeNode depotNode = null;
 		if (contentTitle != null) {
 			if (contentTitle.length() == 0) {// JDK6 use result.isEmpty()
-				JOptionPane.showMessageDialog((Component) getParent(), "ÕıÎÄÃû²»ÄÜÎª¿Õ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog((Component) getParent(), "æ­£æ–‡åä¸èƒ½ä¸ºç©º ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 			} else {
 				int childCount = this.getChildCount();
-				// ±éÀú ¼ì²éÊÇ·ñÓĞÖØÃû
+				// éå† æ£€æŸ¥æ˜¯å¦æœ‰é‡å
 				for (int i = 0; i < childCount; i++) {
 					TreeNode child = this.getChildAt(i);
 					if (child.toString().equalsIgnoreCase(contentTitle)) {
-						JOptionPane.showMessageDialog((Component) getParent(), "¸ÃÕıÎÄÃû³Æ ¡¾ " + child.toString() + " ¡¿ÒÑ¾­´æÔÚ£¬ÁíÃüÃû £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog((Component) getParent(), "è¯¥æ­£æ–‡åç§° ã€ " + child.toString() + " ã€‘å·²ç»å­˜åœ¨ï¼Œå¦å‘½å ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 						return null;
 					}
 				}
 				checkChildNode(this);
-				// Æ´½ÓtreePath
+				// æ‹¼æ¥treePath
 				Object[] nodePath = this.getPath();
 				StringBuilder path = new StringBuilder();
 				for (int i = 0; i < nodePath.length; i++) {
@@ -87,7 +87,7 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 				depotNode = new CustomTreeNode(contentTitle);
 				this.add(depotNode);
 				// updateUI();
-				// ´´½¨¶ÔÓ¦editor
+				// åˆ›å»ºå¯¹åº”editor
 				// CustomEditor customEditor = new CustomEditor();
 				// editorPanel.addTextPaneMap(depotNode, customEditor);
 
@@ -96,13 +96,13 @@ public class CustomTreeNode extends DefaultMutableTreeNode {
 		if (depotNode != null) {
 			return depotNode;
 		} else {
-			throw new NullPointerException("´´½¨Ä¿Â¼½ÚµãÊ§°Ü £¡");
+			throw new NullPointerException("åˆ›å»ºç›®å½•èŠ‚ç‚¹å¤±è´¥ ï¼");
 		}
 
 	}
 
 	/**
-	 * Ìí¼ÓĞÂ½ÚµãÊ±£¬¼ì²é½ÚµãnodeÏÂÃæµÄ½Úµã£¬ÒÆ³ınoflag±êÖ¾
+	 * æ·»åŠ æ–°èŠ‚ç‚¹æ—¶ï¼Œæ£€æŸ¥èŠ‚ç‚¹nodeä¸‹é¢çš„èŠ‚ç‚¹ï¼Œç§»é™¤noflagæ ‡å¿—
 	 * 
 	 * @param node
 	 */

@@ -26,18 +26,18 @@ import com.help.Utils.ColorName;
 
 /**
  * 
- * ´ËÀàÓÃÓÚ±à¼­Êı¾İµÄµ¼ÈëºÍµ¼³ö ,µ¼³öµÄÊı¾İ¸ñÊ½ĞèÒªÄÜ¹»ÕıÈ·µ¼Èë²¢ÄÜÕıÈ·ÏÔÊ¾
+ * æ­¤ç±»ç”¨äºç¼–è¾‘æ•°æ®çš„å¯¼å…¥å’Œå¯¼å‡º ,å¯¼å‡ºçš„æ•°æ®æ ¼å¼éœ€è¦èƒ½å¤Ÿæ­£ç¡®å¯¼å…¥å¹¶èƒ½æ­£ç¡®æ˜¾ç¤º
  * 
  * @author qifan.yang
  * 
  */
 public class DataService {
 	private static final DataService INSTANCE = new DataService();
-	private int time = 600;// ×Ô¶¯±£´æ¼ä¸ôÊ±¼ä£¬µ¥Î»Ãë£¬Ä¬ÈÏ60Ãë
+	private int time = 600;// è‡ªåŠ¨ä¿å­˜é—´éš”æ—¶é—´ï¼Œå•ä½ç§’ï¼Œé»˜è®¤60ç§’
 	private CustomTree customTree;
 	private JTextPane editor;
-	private boolean isHome = true;// ±íÊ¾µ±Ç°ÊÇ·ñÏÔÊ¾µÄÊÇÊ×Ò³
-	private String path = "C:/help.cfg";// ÎÄ¼ş±£´æµÄÄ¬ÈÏÎ»ÖÃ,´ò¿ªÒ»¸öÎÄ¼şÊ±¸üĞÂ´ËÂ·¾¶
+	private boolean isHome = true;// è¡¨ç¤ºå½“å‰æ˜¯å¦æ˜¾ç¤ºçš„æ˜¯é¦–é¡µ
+	private String path = "C:/help.cfg";// æ–‡ä»¶ä¿å­˜çš„é»˜è®¤ä½ç½®,æ‰“å¼€ä¸€ä¸ªæ–‡ä»¶æ—¶æ›´æ–°æ­¤è·¯å¾„
 
 	private Timer timer = new Timer();
 
@@ -77,7 +77,7 @@ public class DataService {
 		this.isHome = isHome;
 	}
 
-	// ¼ÓÔØxml£¬´´½¨Ê÷ĞÎ½á¹¹£¬
+	// åŠ è½½xmlï¼Œåˆ›å»ºæ ‘å½¢ç»“æ„ï¼Œ
 	public HelpNode load(String filePath) throws IOException {
 		// FileInputStream cfgFileInputStream = new FileInputStream(filePath);
 		InputStream cfgFileInputStream = getClass().getClassLoader().getResourceAsStream(filePath);
@@ -91,7 +91,7 @@ public class DataService {
 		scanner.useDelimiter("\\n\\t*");
 		if (scanner.hasNext()) {
 			String startNodeFlag = scanner.next();// <help1>
-			if (startNodeFlag.equalsIgnoreCase("<help>")) {// ´¦ÀíÓĞ"<help>"ºÍÎŞ"<help>"ÕâÁ½ÖÖÇé¿ö
+			if (startNodeFlag.equalsIgnoreCase("<help>")) {// å¤„ç†æœ‰"<help>"å’Œæ— "<help>"è¿™ä¸¤ç§æƒ…å†µ
 				analysisHelpNode(scanner, rootNode, startNodeFlag);
 			} else {
 				analysisHelpNode(scanner, rootNode, startNodeFlag);
@@ -106,7 +106,7 @@ public class DataService {
 		scanner.close();
 		cfgFileInputStream.close();
 
-		return rootNode.getNode(0);// ÓĞ½Úµã<help>ºÍÎŞ½Úµã<help>·µ»Ø²»Í¬
+		return rootNode.getNode(0);// æœ‰èŠ‚ç‚¹<help>å’Œæ— èŠ‚ç‚¹<help>è¿”å›ä¸åŒ
 	}
 
 	private void analysisHelpNode(Scanner scanner, HelpNode parentNode, String startNodeFlag) throws IOException {
@@ -120,26 +120,26 @@ public class DataService {
 
 		// StringBuffer contentBuffer = new StringBuffer();
 		if (scanner.hasNext()) {
-			String content = scanner.next();// ¿ªÊ¼½âÎöÄÚÈİ
+			String content = scanner.next();// å¼€å§‹è§£æå†…å®¹
 
-			while (content != null && !content.equalsIgnoreCase(endNodeFlag)) {// µÚÒ»²ã
-				if (content.trim().startsWith("content=")) { // µ±´æ´¢Îªcontent=
+			while (content != null && !content.equalsIgnoreCase(endNodeFlag)) {// ç¬¬ä¸€å±‚
+				if (content.trim().startsWith("content=")) { // å½“å­˜å‚¨ä¸ºcontent=
 					int eqIndex = content.indexOf("=");
 					if (!content.trim().equalsIgnoreCase("content=")) {
 						helpNode.setContent(content.substring(eqIndex + 1));
 					}
-					// helpNode.setContentHash(helpNode.getContent().hashCode());//ÓÃÓÚ¼ìÑé
+					// helpNode.setContentHash(helpNode.getContent().hashCode());//ç”¨äºæ£€éªŒ
 				} else if (content.trim().startsWith("name")) {
 					int nameIndex = content.indexOf("=");
 					helpNode.setName(content.substring(nameIndex + 1));
-				} else if (content.trim().startsWith("<help")) {// ÕâÀïĞèÓÃÕıÔò±í´ïÊ½£¬¿ÉÒÔÌá¸ßÑéÖ¤ÕıÈ·ĞÔ
+				} else if (content.trim().startsWith("<help")) {// è¿™é‡Œéœ€ç”¨æ­£åˆ™è¡¨è¾¾å¼ï¼Œå¯ä»¥æé«˜éªŒè¯æ­£ç¡®æ€§
 					analysisHelpNode(scanner, helpNode, content);
 				} else if (content.length() > 0) {
-					// Èç¹ûÒ»¸ö½ÚµãÏÂÃæÃ»ÓĞÉÏÃæÈı¸ö£¬ÔòËµÃ÷´Ë½ÚµãÓĞÎÊÌâ£¬»òÔòÉÏÒ»¸ö½ÚµãÓĞÎÊÌâ
-					// ÀıÈç£º<help2-5 content=ALT+ ×ß/ÅÜÇĞ»»<<br>>ALT+A
-					// Í£Ö¹¼ÓÔØ
-					JOptionPane.showMessageDialog(null, "¼ÓÔØÎÄµµ³ö´í£¬¿ÉÄÜ¸ÃÎÄµµ¸ñÊ½ÓĞÎÊÌâ£º" + content);
-					// »Ö¸´³õÊ¼»¯»·¾³
+					// å¦‚æœä¸€ä¸ªèŠ‚ç‚¹ä¸‹é¢æ²¡æœ‰ä¸Šé¢ä¸‰ä¸ªï¼Œåˆ™è¯´æ˜æ­¤èŠ‚ç‚¹æœ‰é—®é¢˜ï¼Œæˆ–åˆ™ä¸Šä¸€ä¸ªèŠ‚ç‚¹æœ‰é—®é¢˜
+					// ä¾‹å¦‚ï¼š<help2-5 content=ALT+ èµ°/è·‘åˆ‡æ¢<<br>>ALT+A
+					// åœæ­¢åŠ è½½
+					JOptionPane.showMessageDialog(null, "åŠ è½½æ–‡æ¡£å‡ºé”™ï¼Œå¯èƒ½è¯¥æ–‡æ¡£æ ¼å¼æœ‰é—®é¢˜ï¼š" + content);
+					// æ¢å¤åˆå§‹åŒ–ç¯å¢ƒ
 					System.exit(0);
 				}
 
@@ -158,26 +158,26 @@ public class DataService {
 	}
 
 	/**
-	 * ¼ÓÔØºÍ±£´æĞè×¢Òâ£ºÓ¦¸Ã¼ÓÉÏ<help>×öÎª¸ù½Úµã£¬µ«ÓÎÏ·ÖĞÃ»ÓĞÕâ¸ö½Úµã¡£
+	 * åŠ è½½å’Œä¿å­˜éœ€æ³¨æ„ï¼šåº”è¯¥åŠ ä¸Š<help>åšä¸ºæ ¹èŠ‚ç‚¹ï¼Œä½†æ¸¸æˆä¸­æ²¡æœ‰è¿™ä¸ªèŠ‚ç‚¹ã€‚
 	 * 
-	 * ËùÒÔ³ÌĞò±£´æÓ¦¸ÃĞèÒªÈ¥µô<help>£¬¼ÓÔØĞè×¢Òâ£¬ÓĞ<help>ºÍÎŞ<help>¼ÓÔØ½á¹ûÓ¦¸ÃÒ»Ñù
+	 * æ‰€ä»¥ç¨‹åºä¿å­˜åº”è¯¥éœ€è¦å»æ‰<help>ï¼ŒåŠ è½½éœ€æ³¨æ„ï¼Œæœ‰<help>å’Œæ— <help>åŠ è½½ç»“æœåº”è¯¥ä¸€æ ·
 	 * 
-	 * ±£´æeditorMapÖĞËùÓĞeditorµÄÄÚÈİµ½Â·¾¶filePath
+	 * ä¿å­˜editorMapä¸­æ‰€æœ‰editorçš„å†…å®¹åˆ°è·¯å¾„filePath
 	 * 
 	 * @param editorMap
-	 *            Òª±£´æÄÚÈİµÄeditorMap
+	 *            è¦ä¿å­˜å†…å®¹çš„editorMap
 	 * @param filePath
-	 *            ±£´æµÄÂ·¾¶
+	 *            ä¿å­˜çš„è·¯å¾„
 	 * @return true or false
 	 */
 	public synchronized boolean export(String filePath) {
-		// todo ±éÀúÊ÷±£´æ
+		// todo éå†æ ‘ä¿å­˜
 		// customTree.getRootPane()
 		CustomTreeNode rootNode = customTree.getRootNode();
 		StringBuffer catalogNodeBuffer = new StringBuffer();
 		recursionExport(catalogNodeBuffer, rootNode, "", "", "<help");
-		// catalogNodeBuffer.append("<help>\n");//±ê×¼µ½´¦¸ñÊ½ĞèÒªÌí¼ÓÕâ¸ö±ê¼Ç£¬µ«ÓÎÏ·ÖĞ²»Ê¹ÓÃ
-		// ±éÀúµÚÒ»²ã½Úµã
+		// catalogNodeBuffer.append("<help>\n");//æ ‡å‡†åˆ°å¤„æ ¼å¼éœ€è¦æ·»åŠ è¿™ä¸ªæ ‡è®°ï¼Œä½†æ¸¸æˆä¸­ä¸ä½¿ç”¨
+		// éå†ç¬¬ä¸€å±‚èŠ‚ç‚¹
 		// for (int i = 1; i <= rootNode.getChildCount(); i++) {
 		// CustomTreeNode firstTreeNode = (CustomTreeNode) rootNode.getChildAt(i
 		// - 1);
@@ -187,7 +187,7 @@ public class DataService {
 		// catalogNodeBuffer.append("<help").append(i).append(">\n");
 		// String content = firstHelpNode.getContent();
 		// String name = firstHelpNode.getName();
-		// if (content != null && content.length() > 0) {// ¿ÕµÄÒ²¼ÓÆğ
+		// if (content != null && content.length() > 0) {// ç©ºçš„ä¹ŸåŠ èµ·
 		// catalogNodeBuffer.append("\tcontent=").append(content).append("\n");
 		// } else {
 		// catalogNodeBuffer.append("\tcontent=\n");
@@ -195,7 +195,7 @@ public class DataService {
 		// if (name != null && name.length() > 0) {
 		// catalogNodeBuffer.append("\tname=").append(name).append("\n");
 		// }
-		// // ±éÀúµÚ¶ş²ã½Úµã
+		// // éå†ç¬¬äºŒå±‚èŠ‚ç‚¹
 		// for (int j = 1; j <= firstTreeNode.getChildCount(); j++) {
 		// CustomTreeNode node = (CustomTreeNode) firstTreeNode.getChildAt(j -
 		// 1);
@@ -211,9 +211,9 @@ public class DataService {
 		// }
 		// catalogNodeBuffer.append("</help").append(i).append(">\n");
 		// }
-		// catalogNodeBuffer.append("</help>\n");//±ê×¼µ½´¦¸ñÊ½ĞèÒªÌí¼ÓÕâ¸ö±ê¼Ç£¬µ«ÓÎÏ·ÖĞ²»Ê¹ÓÃ
+		// catalogNodeBuffer.append("</help>\n");//æ ‡å‡†åˆ°å¤„æ ¼å¼éœ€è¦æ·»åŠ è¿™ä¸ªæ ‡è®°ï¼Œä½†æ¸¸æˆä¸­ä¸ä½¿ç”¨
 
-		// ±£´æ
+		// ä¿å­˜
 		try {
 			if (filePath == null) {
 				filePath = path;
@@ -229,7 +229,7 @@ public class DataService {
 	}
 
 	public void recursionExport(StringBuffer outBuffer, CustomTreeNode treeNode, String tFlag, String hxFlag, String head) {
-		// Ã¿´Îµİ¹é£¬Ìí¼ÓÒ»¸ö"\t" , ÓÃÓÚÅÅ°æ
+		// æ¯æ¬¡é€’å½’ï¼Œæ·»åŠ ä¸€ä¸ª"\t" , ç”¨äºæ’ç‰ˆ
 		// tBuffer.append("\t");
 		String tt = new String(tFlag);
 		for (int j = 1; j <= treeNode.getChildCount(); j++) {
@@ -257,31 +257,31 @@ public class DataService {
 	}
 
 	/**
-	 * ·ÖÎöeditorµÄÄÚÈİ£¬·µ»Ø·ÖÎö½á¹û
+	 * åˆ†æeditorçš„å†…å®¹ï¼Œè¿”å›åˆ†æç»“æœ
 	 * 
 	 * @param editor
-	 * @return ½«ÒªÔ¤ÀÀ»ò±£´æµÄ×Ö·û´®
+	 * @return å°†è¦é¢„è§ˆæˆ–ä¿å­˜çš„å­—ç¬¦ä¸²
 	 */
 	public String analysisDocument() {
 		StringBuffer outBuffer = new StringBuffer();
 		// outBuffer.append("<help1-1> \n");
-		// È¡µÃ¸ùÔªËØ,¸ùÔªËØÏÂÃæÓĞÁ½¸öÔªËØ£¬section root ºÍ bidi root£¬ÎÒÃÇÖ»½âÎösection rootÏÂÃæµÄÄÚÈİ
+		// å–å¾—æ ¹å…ƒç´ ,æ ¹å…ƒç´ ä¸‹é¢æœ‰ä¸¤ä¸ªå…ƒç´ ï¼Œsection root å’Œ bidi rootï¼Œæˆ‘ä»¬åªè§£æsection rootä¸‹é¢çš„å†…å®¹
 		Element[] root = editor.getDocument().getRootElements();
 		for (int i = 0; i < root.length; i++) {
-			// Element element = root[0];//¿ÉÒÔÖ±½Ó½âÎöµÚÒ»¸ö½ÚµãÔªËØ
+			// Element element = root[0];//å¯ä»¥ç›´æ¥è§£æç¬¬ä¸€ä¸ªèŠ‚ç‚¹å…ƒç´ 
 			Element element = root[i];//
-			int sunElementCount = element.getElementCount();// Èç¹ûÊÇsectionÔòÓĞ4¸ö×Ó½Úµã
+			int sunElementCount = element.getElementCount();// å¦‚æœæ˜¯sectionåˆ™æœ‰4ä¸ªå­èŠ‚ç‚¹
 			for (int j = 0; j < sunElementCount; j++) {
-				// È¡µÃµÚÒ»²ã½ÚµãÔªËØ£¬´øÓĞ»»ĞĞµÄÍ¼Æ¬£¬»»ĞĞ·ûºÅµ±×÷ÎÄ±¾
+				// å–å¾—ç¬¬ä¸€å±‚èŠ‚ç‚¹å…ƒç´ ï¼Œå¸¦æœ‰æ¢è¡Œçš„å›¾ç‰‡ï¼Œæ¢è¡Œç¬¦å·å½“ä½œæ–‡æœ¬
 				Element firstLayerElement = element.getElement(j);
-				// ±éÀúÒ»¸öÔªËØ£¬´øÓĞ»»ĞĞµÄÍ¼Æ¬ÏÈ½âÎöÍ¼Æ¬ÔÙ½âÎö»»ĞĞ
+				// éå†ä¸€ä¸ªå…ƒç´ ï¼Œå¸¦æœ‰æ¢è¡Œçš„å›¾ç‰‡å…ˆè§£æå›¾ç‰‡å†è§£ææ¢è¡Œ
 				for (int k = 0; k < firstLayerElement.getElementCount(); k++) {
-					// ½øÈëµÚ¶ş²ã
+					// è¿›å…¥ç¬¬äºŒå±‚
 					Element secondLayerElement = firstLayerElement.getElement(k);
 					AttributeSet secondLayerAttr = secondLayerElement.getAttributes();
 
 					Icon icon = StyleConstants.getIcon(secondLayerAttr);
-					if (icon != null) {// ´¦ÀíÍ¼Æ¬£¬¶ÁÈ¡Í¼Æ¬µÄµØÖ·
+					if (icon != null) {// å¤„ç†å›¾ç‰‡ï¼Œè¯»å–å›¾ç‰‡çš„åœ°å€
 						// int startOff = secondLayerElement.getStartOffset();
 						// int endOff = secondLayerElement.getEndOffset();
 						Enumeration<?> attributeNames = secondLayerAttr.getAttributeNames();
@@ -293,8 +293,8 @@ public class DataService {
 								int lastIndexOf = replace.lastIndexOf("/");
 								String imageName = replace.substring(lastIndexOf + 1);
 								outBuffer.append("<pic>").append(imageName).append("<pic>");
-								// System.out.println("ÎÄµµÖĞÎ»ÖÃ :[" + startOff +
-								// "-----" + endOff + " ]ÊÇÍ¼Æ¬£¬Ãû×Ö£º" + imageName);
+								// System.out.println("æ–‡æ¡£ä¸­ä½ç½® :[" + startOff +
+								// "-----" + endOff + " ]æ˜¯å›¾ç‰‡ï¼Œåå­—ï¼š" + imageName);
 							}
 						}
 
@@ -304,20 +304,20 @@ public class DataService {
 						try {
 							String text = editor.getText(startOff, endOff - startOff);
 							// String copy=text;
-							if (text.equals("\n")) {// Çé¿ö3,4 £ºÖ±½Ó¼Ó<br>
+							if (text.equals("\n")) {// æƒ…å†µ3,4 ï¼šç›´æ¥åŠ <br>
 								outBuffer.append("<<br>>");
-								// System.out.println("ÎÄµµÖĞÎ»ÖÃ :[" + startOff +
-								// "-----" + endOff + " ]ÊÇ»»ĞĞ·ûºÅ!");
+								// System.out.println("æ–‡æ¡£ä¸­ä½ç½® :[" + startOff +
+								// "-----" + endOff + " ]æ˜¯æ¢è¡Œç¬¦å·!");
 							} else if (text.trim().length() == 0) {
 								// System.out.println("kong bai"+text+"jsdjflksdjf");
 								outBuffer.append(text);
 
 							} else {
-								// System.out.println("ÎÄµµÖĞÎ»ÖÃ :[" + startOff +
-								// "-----" + endOff + " ]ÊÇ´¿ÎÄ±¾!");
+								// System.out.println("æ–‡æ¡£ä¸­ä½ç½® :[" + startOff +
+								// "-----" + endOff + " ]æ˜¯çº¯æ–‡æœ¬!");
 								/**
-								 * ÔÚÕâÀï´¦Àí¶ÁÈëµÄÎÄ±¾,ÓĞÒÔÏÂ¼¸ÖÖÇé¿ö £»1£º¸ñÊ½Ò»ÑùµÄÎÄ±¾ÎªÒ»¸öElement
-								 * 2£ºÓĞ¶àÖÖ¸ñÊ½µÄÒ»ĞĞÎÄ±¾£» 3£ºÍ¼Æ¬ºóÃæµÄ»»ĞĞ£» 4£ºµ¥´¿µÄ»»ĞĞ
+								 * åœ¨è¿™é‡Œå¤„ç†è¯»å…¥çš„æ–‡æœ¬,æœ‰ä»¥ä¸‹å‡ ç§æƒ…å†µ ï¼›1ï¼šæ ¼å¼ä¸€æ ·çš„æ–‡æœ¬ä¸ºä¸€ä¸ªElement
+								 * 2ï¼šæœ‰å¤šç§æ ¼å¼çš„ä¸€è¡Œæ–‡æœ¬ï¼› 3ï¼šå›¾ç‰‡åé¢çš„æ¢è¡Œï¼› 4ï¼šå•çº¯çš„æ¢è¡Œ
 								 * 
 								 */
 								String analysisResult = analysisStyle(secondLayerAttr, text);
@@ -347,13 +347,13 @@ public class DataService {
 	}
 
 	/**
-	 * ¼ì²éÎÄµµÆ¬¶Î¸ñÊ½ÊÇ·ñÊÇÆÕÍ¨¸ñÊ½£¬
-	 * Èç¹û¸ÃÎÄµµÆ¬¶ÎÓĞ£º¼Ó´Ö£¬×ÖÌå²»µÈÓÚ15£¬ÑÕÉ«²»µÈÓÚÄ¬ÈÏÖµµÈÇé¿öÖ®Ò»Ôò½«¸ñÊ½ĞÅÏ¢ÌáÈ¡³öÀ´ÓÃÓÚ¹¹Ôì°üº¬¸ñÊ½ĞÅÏ¢µÄ×Ö·û´®£¬·ñÔòÖ±½Ó·µ»Ø×Ö·û´®
+	 * æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µæ ¼å¼æ˜¯å¦æ˜¯æ™®é€šæ ¼å¼ï¼Œ
+	 * å¦‚æœè¯¥æ–‡æ¡£ç‰‡æ®µæœ‰ï¼šåŠ ç²—ï¼Œå­—ä½“ä¸ç­‰äº15ï¼Œé¢œè‰²ä¸ç­‰äºé»˜è®¤å€¼ç­‰æƒ…å†µä¹‹ä¸€åˆ™å°†æ ¼å¼ä¿¡æ¯æå–å‡ºæ¥ç”¨äºæ„é€ åŒ…å«æ ¼å¼ä¿¡æ¯çš„å­—ç¬¦ä¸²ï¼Œå¦åˆ™ç›´æ¥è¿”å›å­—ç¬¦ä¸²
 	 * 
 	 * @param attributeSet
-	 *            ´ı¼ì²éÎÄµµÆ¬¶ÎµÄ¸ñÊ½ÊôĞÔ
+	 *            å¾…æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µçš„æ ¼å¼å±æ€§
 	 * @param result
-	 *            ´ı¼ì²éÎÄµµÆ¬¶Î
+	 *            å¾…æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µ
 	 * @return
 	 */
 	private String analysisStyle(AttributeSet attributeSet, String result) {
@@ -363,12 +363,12 @@ public class DataService {
 		boolean isBold = StyleConstants.isBold(attributeSet);
 
 		String conventColorString = convertToColorName(foreground);
-		// ³£¹æ¸ñÊ½ÔòÖ±½Ó·µ»Ø,ºÚÉ«µ±³£¹æ´¦Àí
+		// å¸¸è§„æ ¼å¼åˆ™ç›´æ¥è¿”å›,é»‘è‰²å½“å¸¸è§„å¤„ç†
 		if (fontSize == 15 && foreground.equals(Utils.RIGHT_FONT_COLOR) && !isBold || foreground.equals(Color.BLACK)) {
 			return result;
 		} else {
-			// <<font size='15' color='normal_color' name='ËÎÌå' style='B'>>
-			stringBuffer.append("<<font size='").append(fontSize).append("' color='").append(conventColorString).append("' name='ËÎÌå'").append(isBold ? " style='B'>>" : ">>").append(result).append("<</font>>");
+			// <<font size='15' color='normal_color' name='å®‹ä½“' style='B'>>
+			stringBuffer.append("<<font size='").append(fontSize).append("' color='").append(conventColorString).append("' name='å®‹ä½“'").append(isBold ? " style='B'>>" : ">>").append(result).append("<</font>>");
 			return stringBuffer.toString();
 		}
 
@@ -403,10 +403,10 @@ public class DataService {
 		MutableAttributeSet attr = new SimpleAttributeSet();
 		editor.getDocument().remove(0, editor.getDocument().getLength());
 		String content = node.getContent();
-		if (content == null) {// is nullËµÃ÷ÎªĞÂ½¨µÄÎÄµµ£¬ÏÔÊ¾ÌáÊ¾ÄÚÈİ
+		if (content == null) {// is nullè¯´æ˜ä¸ºæ–°å»ºçš„æ–‡æ¡£ï¼Œæ˜¾ç¤ºæç¤ºå†…å®¹
 			StyleConstants.setFontSize(attr, 15);
 			StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
-			editor.getDocument().insertString(0, "ÇëÔÚÕâÀïÊäÈëÕıÎÄ.....", attr);
+			editor.getDocument().insertString(0, "è¯·åœ¨è¿™é‡Œè¾“å…¥æ­£æ–‡.....", attr);
 		} else {
 
 			Scanner scanner = new Scanner(content);
@@ -415,15 +415,15 @@ public class DataService {
 				String next = scanner.next();
 				StyleConstants.setFontSize(attr, 15);
 				StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
-				// // ½âÎö´¿ÎÄ±¾
-				// /font>>¡¾È­¡¿¡¾µ¶¡¿¡¾½£¡¿¡¾ÇÙ¡¿
+				// // è§£æçº¯æ–‡æœ¬
+				// /font>>ã€æ‹³ã€‘ã€åˆ€ã€‘ã€å‰‘ã€‘ã€ç´ã€‘
 				if (!next.contains(">>") && !next.contains(">")) {
-					// // Ã»ÓĞ°üº¬¡±>>¡°£¬ËµÃ÷ÊÇ´¿ÎÄ±¾
+					// // æ²¡æœ‰åŒ…å«â€>>â€œï¼Œè¯´æ˜æ˜¯çº¯æ–‡æœ¬
 					editor.getDocument().insertString(editor.getCaretPosition(), next, attr);
 					// // System.out.println(next);
 					// next = null;
 					//
-				} else if (next.trim().startsWith("br>>")) {// ½âÎö»»ĞĞ Ö÷Òª½á¹¹ 1:br>>
+				} else if (next.trim().startsWith("br>>")) {// è§£ææ¢è¡Œ ä¸»è¦ç»“æ„ 1:br>>
 					// ,2:
 					// // br>> sdfsdfsdfd
 					String[] splitBr = next.split(">>");
@@ -431,21 +431,21 @@ public class DataService {
 					editor.getDocument().insertString(editor.getCaretPosition(), "\n", null);
 					// // System.out.println(splitBr[0]);
 					if (splitBr.length > 1) {
-						// // br>> sdfsdfsdfd £º»»ĞĞ·ûºÅºóÃæÓĞ½ô¸úÎÄ×ÖÄÚÈİµÄÇé¿ö
-						// <<br>><<br>> <<font ·Ö¸îºóÎª£º ¡°br>> ¡±
+						// // br>> sdfsdfsdfd ï¼šæ¢è¡Œç¬¦å·åé¢æœ‰ç´§è·Ÿæ–‡å­—å†…å®¹çš„æƒ…å†µ
+						// <<br>><<br>> <<font åˆ†å‰²åä¸ºï¼š â€œbr>> â€
 						StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
-						StyleConstants.setBold(attr, false);// ĞèÉèÖÃ
+						StyleConstants.setBold(attr, false);// éœ€è®¾ç½®
 						editor.getDocument().insertString(editor.getCaretPosition(), splitBr[1], attr);
 
 					}
 					for (int i = 0; i < splitBr.length; i++) {
 						splitBr[i] = null;
 					}
-					// // ½âÎöÍ¼Æ¬
+					// // è§£æå›¾ç‰‡
 				} else if (next.startsWith("pic>")) {
 					String[] picSplit = next.split(">");
 					// picSplit[1]==image name
-					// ÔİÊ±ÓÃÒ»ÕÅÍ¼Æ¬Ìæ´ú,µ«ÊÇ±£´æÊ±»¹ÊÇ±£´æÔ­À´µÄÃû×Ö
+					// æš‚æ—¶ç”¨ä¸€å¼ å›¾ç‰‡æ›¿ä»£,ä½†æ˜¯ä¿å­˜æ—¶è¿˜æ˜¯ä¿å­˜åŸæ¥çš„åå­—
 					if (picSplit.length > 1) {
 						ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("com/help/res/help.png"));
 						imageIcon.setDescription(picSplit[1]);
@@ -455,19 +455,19 @@ public class DataService {
 					for (int i = 0; i < picSplit.length; i++) {
 						picSplit[i] = null;
 					}
-					// // ½âÎöÓĞ¸ñÊ½µÄÎÄ×Ö
+					// // è§£ææœ‰æ ¼å¼çš„æ–‡å­—
 				} else if (next.startsWith("/font>")) {
 					String[] fontSplit = next.split(">>");
 					if (fontSplit.length > 1) {
 						StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
-						StyleConstants.setBold(attr, false);// ĞèÉèÖÃ
-						StyleConstants.setFontSize(attr, 15);// ĞèÉèÖÃ
+						StyleConstants.setBold(attr, false);// éœ€è®¾ç½®
+						StyleConstants.setFontSize(attr, 15);// éœ€è®¾ç½®
 						editor.getDocument().insertString(editor.getCaretPosition(), fontSplit[1], attr);
 					}
 
 				} else {
 					if (next.toLowerCase().startsWith("font ")) {
-						String[] splitAC = next.split(">>");// 0:ÊôĞÔ£¬1£ºÄÚÈİ
+						String[] splitAC = next.split(">>");// 0:å±æ€§ï¼Œ1ï¼šå†…å®¹
 						String[] fontAttr = splitAC[0].split(" ");
 						// MutableAttributeSet attr = new SimpleAttributeSet();
 						// StyleConstants.setFontSize(attr, 16);
@@ -478,7 +478,7 @@ public class DataService {
 							if (key.equalsIgnoreCase("size")) {
 								StyleConstants.setFontSize(attr, Integer.parseInt(value));
 							} else if (key.equalsIgnoreCase("color")) {
-								// ÑÕÉ«´¦Àí
+								// é¢œè‰²å¤„ç†
 								if (value.startsWith("#")) {
 									int rr = Integer.parseInt(value.substring(1, 3), 16);
 									int gg = Integer.parseInt(value.substring(3, 5), 16);
@@ -492,7 +492,7 @@ public class DataService {
 											StyleConstants.setForeground(attr, colorNames[j].getColor());
 											break;
 										} else {
-											StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);// Ã»ÓĞÆ¥Åä
+											StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);// æ²¡æœ‰åŒ¹é…
 										}
 									}
 								}
@@ -504,9 +504,9 @@ public class DataService {
 							key = null;
 							value = null;
 						}
-						// // ´¦ÀíÄÚÈİ
+						// // å¤„ç†å†…å®¹
 						editor.getDocument().insertString(editor.getCaretPosition(), splitAC[1], attr);
-						// ÒòÎªfontÊôĞÔÊÇ³É¶Ô³öÏÖµÄ£¬ÔÚÕâÀïÈ¥µô½éËØ±êÖ¾
+						// å› ä¸ºfontå±æ€§æ˜¯æˆå¯¹å‡ºç°çš„ï¼Œåœ¨è¿™é‡Œå»æ‰ä»‹ç´ æ ‡å¿—
 					}
 				}
 			}
@@ -524,12 +524,12 @@ public class DataService {
 		// ImageIcon(getClass().getResource("long.png"));
 		try {
 			editor.getDocument().remove(0, editor.getDocument().getLength());
-			editor.getDocument().insertString(editor.getDocument().getLength(), "°ïÖúÎÄµµ±à¼­Æ÷ \n\n", attr);
+			editor.getDocument().insertString(editor.getDocument().getLength(), "å¸®åŠ©æ–‡æ¡£ç¼–è¾‘å™¨ \n\n", attr);
 			StyleConstants.setFontSize(attr, 20);
-			editor.getDocument().insertString(editor.getDocument().getLength(), "  1£º¶¥²¿¹¤¾ßÀ¸Ìá¹©°´Å¥¹¦ÄÜÒÀ´ÎÎª¡¾ĞÂ½¨|´ò¿ª|±£´æ|Áí´æÎª¡¿\n\n", attr);
-			editor.getDocument().insertString(editor.getDocument().getLength(), "  2£ºÑ¡ÖĞ×ó±ßÊ÷ĞÎ½Úµã£¬ÓÒ»÷Êó±ê¿ÉÒÔ¡¾ĞÂ½¨|É¾³ı|ÖØÃüÃû¡¿×ÓÄ¿Â¼»òÕıÎÄ\n\n", attr);
-			editor.getDocument().insertString(editor.getDocument().getLength(), "  3£ºĞÂ½¨ÎÄµµ×Ô¶¯Ä¬ÈÏ±£´æÔÚ¡¾C:/help.cfg¡¿\n\n", attr);
-			editor.getDocument().insertString(editor.getDocument().getLength(), "  4£ºÎÄµµÄ¬ÈÏ×Ô¶¯±£´æ£¬Ê±¼ä¼ä¸ô£º60Ãë£¬Ò²¿Éµã»÷¹¤¾ßÀ¸±£´æ°´Å¥±£´æĞŞ¸Ä\n\n", attr);
+			editor.getDocument().insertString(editor.getDocument().getLength(), "  1ï¼šé¡¶éƒ¨å·¥å…·æ æä¾›æŒ‰é’®åŠŸèƒ½ä¾æ¬¡ä¸ºã€æ–°å»º|æ‰“å¼€|ä¿å­˜|å¦å­˜ä¸ºã€‘\n\n", attr);
+			editor.getDocument().insertString(editor.getDocument().getLength(), "  2ï¼šé€‰ä¸­å·¦è¾¹æ ‘å½¢èŠ‚ç‚¹ï¼Œå³å‡»é¼ æ ‡å¯ä»¥ã€æ–°å»º|åˆ é™¤|é‡å‘½åã€‘å­ç›®å½•æˆ–æ­£æ–‡\n\n", attr);
+			editor.getDocument().insertString(editor.getDocument().getLength(), "  3ï¼šæ–°å»ºæ–‡æ¡£è‡ªåŠ¨é»˜è®¤ä¿å­˜åœ¨ã€C:/help.cfgã€‘\n\n", attr);
+			editor.getDocument().insertString(editor.getDocument().getLength(), "  4ï¼šæ–‡æ¡£é»˜è®¤è‡ªåŠ¨ä¿å­˜ï¼Œæ—¶é—´é—´éš”ï¼š60ç§’ï¼Œä¹Ÿå¯ç‚¹å‡»å·¥å…·æ ä¿å­˜æŒ‰é’®ä¿å­˜ä¿®æ”¹\n\n", attr);
 			// editor.insertIcon(imageIcon);
 			// editor.setEditable(false);
 		} catch (BadLocationException e) {
@@ -537,18 +537,18 @@ public class DataService {
 		}
 	}
 
-	// Æô¶¯¶¨Ê±±£´æ,ÔİÊ±ÉèÖÃÎª30Ãë×Ô¶¯±£´æÒ»´Î
+	// å¯åŠ¨å®šæ—¶ä¿å­˜,æš‚æ—¶è®¾ç½®ä¸º30ç§’è‡ªåŠ¨ä¿å­˜ä¸€æ¬¡
 	public void startStoreTimer() {
 		timer = new Timer();
 		timer.schedule(new StoreTimer(), time * 1000, time * 1000);
-		System.out.println("Æô¶¯¶¨Ê±±£´æ........");
+		System.out.println("å¯åŠ¨å®šæ—¶ä¿å­˜........");
 	}
 
 	public void stopStoreTimer() {
 		timer.cancel();
 	}
 
-	// ¶¨Ê±±£´æ£¬ĞèÒªµ±±à¼­ÎÄµµÊ±Æô¶¯
+	// å®šæ—¶ä¿å­˜ï¼Œéœ€è¦å½“ç¼–è¾‘æ–‡æ¡£æ—¶å¯åŠ¨
 	class StoreTimer extends TimerTask {
 
 		@Override
@@ -561,7 +561,7 @@ public class DataService {
 				if (helpNode != null) {
 					helpNode.setContent(analysisDocument());
 					export(path);
-					System.out.println("×Ô¶¯±£´æÍê³É: Path:" + path + "........");
+					System.out.println("è‡ªåŠ¨ä¿å­˜å®Œæˆ: Path:" + path + "........");
 				}
 			}
 		}
@@ -570,7 +570,7 @@ public class DataService {
 
 	// public static void main(String[] args) {
 	// try {
-	// DataService.getInstance().load("C:/Documents and Settings/Administrator/×ÀÃæ/help/help.xml");
+	// DataService.getInstance().load("C:/Documents and Settings/Administrator/æ¡Œé¢/help/help.xml");
 	// } catch (IOException e) {
 	// e.printStackTrace();
 	// }

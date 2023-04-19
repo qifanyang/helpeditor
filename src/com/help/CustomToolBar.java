@@ -14,7 +14,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.tree.TreePath;
 
 /**
- * ´¦Àí´ò¿ª£¬±£´æ,.....,µÄ¹¤¾ßÌõ
+ * å¤„ç†æ‰“å¼€ï¼Œä¿å­˜,.....,çš„å·¥å…·æ¡
  * 
  * @author qifan.yang
  * 
@@ -31,11 +31,11 @@ public class CustomToolBar extends JToolBar {
 	JButton openButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("com/help/res/open_folder_32.png")));
 	JButton saveButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("com/help/res/save.png")));
 	JButton saveAsButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("com/help/res/saveAs.png")));
-	// JButton exitButton = new JButton("¹Ø±Õ");
-	newButton.setToolTipText("ĞÂ½¨");
-	openButton.setToolTipText("´ò¿ª");
-	saveButton.setToolTipText("±£´æ");
-	saveAsButton.setToolTipText("Áí´æÎª");
+	// JButton exitButton = new JButton("å…³é—­");
+	newButton.setToolTipText("æ–°å»º");
+	openButton.setToolTipText("æ‰“å¼€");
+	saveButton.setToolTipText("ä¿å­˜");
+	saveAsButton.setToolTipText("å¦å­˜ä¸º");
 	add(newButton);
 	add(openButton);
 	add(saveButton);
@@ -46,7 +46,7 @@ public class CustomToolBar extends JToolBar {
 	// exitButton.addActionListener(new OpenAction());
 	saveButton.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		// ´¦Àíµ±Ç°±à¼­µÄÊı¾İ
+		// å¤„ç†å½“å‰ç¼–è¾‘çš„æ•°æ®
 		CustomTree customTree = DataService.getInstance().getCustomTree();
 		TreePath selectionPath = customTree.getSelectionPath();
 		if (selectionPath != null) {
@@ -56,7 +56,7 @@ public class CustomToolBar extends JToolBar {
 			String analysisDocument = DataService.getInstance().analysisDocument();
 			helpNode.setContent(analysisDocument);
 			// DataService.getInstance().showIndex();
-			DataService.getInstance().export(null);// null±íÊ¾²ÉÓÃÄ¬ÈÏ´ò¿ªµÄÂ·¾¶±£´æ£¬»òÕß±£´æµ½Ä¬ÈÏÂ·¾¶
+			DataService.getInstance().export(null);// nullè¡¨ç¤ºé‡‡ç”¨é»˜è®¤æ‰“å¼€çš„è·¯å¾„ä¿å­˜ï¼Œæˆ–è€…ä¿å­˜åˆ°é»˜è®¤è·¯å¾„
 		    }
 		}
 	    }
@@ -64,13 +64,13 @@ public class CustomToolBar extends JToolBar {
 	newButton.addActionListener(new ActionListener() {
 
 	    public void actionPerformed(ActionEvent e) {
-		String result = JOptionPane.showInputDialog(getParent(), "ÇëÊäÈëÎÄµµÃû³Æ£¡", "ĞÂ½¨ÎÄµµ", JOptionPane.OK_CANCEL_OPTION);
+		String result = JOptionPane.showInputDialog(getParent(), "è¯·è¾“å…¥æ–‡æ¡£åç§°ï¼", "æ–°å»ºæ–‡æ¡£", JOptionPane.OK_CANCEL_OPTION);
 		System.out.println("sdf");
 		if (result != null && result.length() > 0) {
 		    CustomTree customTree = DataService.getInstance().getCustomTree();
 		    CustomTreeNode rootNode = customTree.getRootNode();
 		    HelpNode helpNode = customTree.getHelpNode(rootNode);
-		    //ÒÆ³ı¾ÉµÄÊı¾İ
+		    //ç§»é™¤æ—§çš„æ•°æ®
 		    helpNode.removeAll();
 		    rootNode.removeAllChildren();
 		    customTree.clearHelpTreeMap();
@@ -90,14 +90,14 @@ public class CustomToolBar extends JToolBar {
 
     }
 
-    // ±£´æ´¦Àí£¬ÏÈ·ÖÎöµ±Ç°±à¼­ÇøÓò£¬ÔÙ±éÀú×ó±ßµÄÊ÷ĞÎ½á¹¹£¬Éú³ÉÎÄ¼ş±£´æ
+    // ä¿å­˜å¤„ç†ï¼Œå…ˆåˆ†æå½“å‰ç¼–è¾‘åŒºåŸŸï¼Œå†éå†å·¦è¾¹çš„æ ‘å½¢ç»“æ„ï¼Œç”Ÿæˆæ–‡ä»¶ä¿å­˜
     class SaveAsAction implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 	    JFileChooser fileChooser = new JFileChooser();
 	    fileChooser.setDialogType(JFileChooser.SAVE_DIALOG);
-	    fileChooser.setDialogTitle("Áí´æÎª");
-	    // fileChooser.setApproveButtonText("±£´æ");
+	    fileChooser.setDialogTitle("å¦å­˜ä¸º");
+	    // fileChooser.setApproveButtonText("ä¿å­˜");
 	    // editor.getStyledDocument().getDefaultRootElement();
 	    if (editorPanel.getEditor().getStyledDocument() == null) {
 		System.out.println("editor is NULL ");
@@ -111,7 +111,7 @@ public class CustomToolBar extends JToolBar {
 
 		    @Override
 		    public String getDescription() {
-			return "ÊäÈëÎÄ¼şÃû£¬ÀıÈç£ºxx.cfg";
+			return "è¾“å…¥æ–‡ä»¶åï¼Œä¾‹å¦‚ï¼šxx.cfg";
 		    }
 		});
 		int returnVal = fileChooser.showSaveDialog(getParent());
@@ -119,22 +119,22 @@ public class CustomToolBar extends JToolBar {
 		    File selectedFile = fileChooser.getSelectedFile();
 		    String filePath = selectedFile.getPath();
 		    if (!filePath.toLowerCase().endsWith(".cfg")) {
-			// ´¦ÀíÎÄ¼şÃûÎª
+			// å¤„ç†æ–‡ä»¶åä¸º
 			filePath = filePath + ".cfg";
 		    }
 
 		    System.out.println(filePath);
-		    // ´¦Àíµ±Ç°±à¼­µÄÊı¾İ
+		    // å¤„ç†å½“å‰ç¼–è¾‘çš„æ•°æ®
 		    CustomTree customTree = DataService.getInstance().getCustomTree();
 		    TreePath selectionPath = customTree.getSelectionPath();
 		    if (selectionPath != null) {
 			CustomTreeNode lastPathComponent = (CustomTreeNode) selectionPath.getLastPathComponent();
-			// ²»ÊÇÊ×Ò³µÄÊ±ºò£¬²Å·ÖÎö±à¼­ÇøÓòÄÚµÄÄÚÈİ
+			// ä¸æ˜¯é¦–é¡µçš„æ—¶å€™ï¼Œæ‰åˆ†æç¼–è¾‘åŒºåŸŸå†…çš„å†…å®¹
 			if (lastPathComponent != null && !DataService.getInstance().isHome()) {
 			    HelpNode helpNode = customTree.getHelpNode(lastPathComponent);
 			    String analysisDocument = DataService.getInstance().analysisDocument();
 			    helpNode.setContent(analysisDocument);
-			    // ¸üĞÂÂ·¾¶
+			    // æ›´æ–°è·¯å¾„
 			    // DataService.getInstance().showIndex();
 			}
 		    }
@@ -175,17 +175,17 @@ public class CustomToolBar extends JToolBar {
 
 		    @Override
 		    public String getDescription() {
-			return "ÎÄ¼şÃû£¬ÀıÈç£ºxx.cfg";
+			return "æ–‡ä»¶åï¼Œä¾‹å¦‚ï¼šxx.cfg";
 		    }
 		});
 		int returnVal = fileChooser.showOpenDialog(getParent());
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = fileChooser.getSelectedFile();
 		    String filePath = selectedFile.getPath();
-		    // ´ò¿ªÎÄ¼şÊ±£¬¸üĞÂ±£´æÂ·¾¶£¬¶¨Ê±±£´æ½«²ÉÓÃ±¾Â·¾¶
+		    // æ‰“å¼€æ–‡ä»¶æ—¶ï¼Œæ›´æ–°ä¿å­˜è·¯å¾„ï¼Œå®šæ—¶ä¿å­˜å°†é‡‡ç”¨æœ¬è·¯å¾„
 		    DataService.getInstance().setPath(filePath);
 		    // if (!filePath.toLowerCase().endsWith(".cfg")) {
-		    // // ´¦ÀíÎÄ¼şÃûÎª
+		    // // å¤„ç†æ–‡ä»¶åä¸º
 		    // filePath = filePath + ".cfg";
 		    // }
 
@@ -193,17 +193,17 @@ public class CustomToolBar extends JToolBar {
 		    // DataService.getInstance().export(textPaneMap, customTree,
 		    // filePath);
 		    try {
-			// ·µ»ØµÄÊÇhelpRootNode£¬Îª¸ù½Úµã£¬ÀıÈçÄÚÈİÎª£º°ïÖúÏµÍ³
+			// è¿”å›çš„æ˜¯helpRootNodeï¼Œä¸ºæ ¹èŠ‚ç‚¹ï¼Œä¾‹å¦‚å†…å®¹ä¸ºï¼šå¸®åŠ©ç³»ç»Ÿ
 			CustomTree customTree = DataService.getInstance().getCustomTree();
 			CustomTreeNode rootNode = customTree.getRootNode();
 			HelpNode helpRootNode = customTree.getHelpNode(rootNode);
-			//ÒÆ³ı¾ÉµÄÊı¾İ
+			//ç§»é™¤æ—§çš„æ•°æ®
 			helpRootNode.removeAll();
 			rootNode.removeAllChildren();
 			customTree.clearHelpTreeMap();
 			
 			customTree.addHelpNode(rootNode, helpRootNode);
-			//loadĞèÒª¸ù½Úµã¡£ËùÒÔĞèÒªÉÏÃæµÄ´¦Àí
+			//loadéœ€è¦æ ¹èŠ‚ç‚¹ã€‚æ‰€ä»¥éœ€è¦ä¸Šé¢çš„å¤„ç†
 			HelpNode newRootNode = DataService.getInstance().load(filePath);
 			customTree.clearHelpTreeMap();
 			customTree.addHelpNode(rootNode, newRootNode);
@@ -212,7 +212,7 @@ public class CustomToolBar extends JToolBar {
 
 			customTree.updateAllNode(helpRootNode, rootNode);
 			String name2 = selectedFile.getName();
-			rootNode.setUserObject("[ÎÄ¼şÃû:"+name2.substring(0, name2.indexOf("."))+"]");
+			rootNode.setUserObject("[æ–‡ä»¶å:"+name2.substring(0, name2.indexOf("."))+"]");
 			customTree.updateUI();
 
 			DataService.getInstance().showIndex();

@@ -8,7 +8,7 @@ public class Utils {
 	public static final Color BACKGROUD_COLOR = new Color(33, 24, 8);
 
 	enum FontName {
-		NORMAL("宋体");
+		NORMAL("瀹嬩綋");
 
 		private String name;
 
@@ -23,7 +23,7 @@ public class Utils {
 	}
 
 	public enum ColorName {
-		NORMAL_COLOR("常规", RIGHT_FONT_COLOR), YELLOW("黄色", Color.YELLOW), RED("红色", Color.RED), GREEN("绿色", Color.GREEN);
+		NORMAL_COLOR("甯歌", RIGHT_FONT_COLOR), YELLOW("榛勮壊", Color.YELLOW), RED("绾㈣壊", Color.RED), GREEN("缁胯壊", Color.GREEN);
 
 		private String name;
 		private Color color;

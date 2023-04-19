@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- * °ïÖúÏµÍ³±à¼­Æ÷
+ * å¸®åŠ©ç³»ç»Ÿç¼–è¾‘å™¨
  * 
  * @author qifan.yang
  * 
@@ -40,7 +40,7 @@ public class HelpEditor extends JFrame {
 	}
 	// icon = this.getToolkit().getImage("seasky16.png");
 	setIconImage(icon);
-	setTitle("°ïÖúÏµÍ³±à¼­Æ÷");
+	setTitle("å¸®åŠ©ç³»ç»Ÿç¼–è¾‘å™¨");
 	setLayout(new BorderLayout());
 
 	// create editor panel

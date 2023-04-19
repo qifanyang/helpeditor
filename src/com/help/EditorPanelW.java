@@ -42,18 +42,18 @@ import com.help.Utils;
 import com.help.Utils.ColorName;
 
 
-//todo ÔİÊ±²»É¾³ı£¬ÕâÀï¹¦ÄÜ´úÂë
+//todo æš‚æ—¶ä¸åˆ é™¤ï¼Œè¿™é‡ŒåŠŸèƒ½ä»£ç 
 public class EditorPanelW extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JTextPane currentEditor = new JTextPane();
-    // Ô¤ÀÀÇøÏÔÊ¾
+    // é¢„è§ˆåŒºæ˜¾ç¤º
     private JTextArea showArea;
 
-    // ±£´æÊ÷½Úµãµ½JTextPaneµÄÓ³ÉäµÄMAP£¬Ñ¡Ôñ²»Èİ½ÚµãÊ±ÓÃÓÚ²éÕÒ ¶ÔÓ¦µÄTextPane
+    // ä¿å­˜æ ‘èŠ‚ç‚¹åˆ°JTextPaneçš„æ˜ å°„çš„MAPï¼Œé€‰æ‹©ä¸å®¹èŠ‚ç‚¹æ—¶ç”¨äºæŸ¥æ‰¾ å¯¹åº”çš„TextPane
     // private Map<CustomTreeNode, CustomEditor> textPaneMap = new
     // HashMap<CustomTreeNode, CustomEditor>();
-    // ±£´æÊ÷½Úµãµ½Êä³öÎÄ±¾µÄÓ³ÉäMAP£¬±£´æÊ±¿É¼Ó¿ì±£´æËÙ¶È£¬µ«Ğè×¢ÒâĞŞ¸ÄºóÒª¸üĞÂMAP
+    // ä¿å­˜æ ‘èŠ‚ç‚¹åˆ°è¾“å‡ºæ–‡æœ¬çš„æ˜ å°„MAPï¼Œä¿å­˜æ—¶å¯åŠ å¿«ä¿å­˜é€Ÿåº¦ï¼Œä½†éœ€æ³¨æ„ä¿®æ”¹åè¦æ›´æ–°MAP
     // private Map<CustomTreeNode, String> outMap = new
     // HashMap<CustomTreeNode, String>();
     private JPanel editorTabPanel;
@@ -87,9 +87,9 @@ public class EditorPanelW extends JPanel {
 
     private JPanel creatOperatePanel() {
 	JPanel operatePanel = new JPanel();
-	// saveBtn = new JButton("±£´æ");
-	// JButton cancelBtn = new JButton("È¡Ïû");
-	// JButton openBtn = new JButton("´ò¿ª");
+	// saveBtn = new JButton("ä¿å­˜");
+	// JButton cancelBtn = new JButton("å–æ¶ˆ");
+	// JButton openBtn = new JButton("æ‰“å¼€");
 	// operatePanel.add(openBtn);
 	// operatePanel.add(saveBtn);
 	// operatePanel.add(cancelBtn);
@@ -104,22 +104,22 @@ public class EditorPanelW extends JPanel {
 	editorTabPanel = new JPanel();
 	editorTabPanel.setLayout(new BorderLayout());
 	toolBar = Box.createHorizontalBox();
-	final JButton editBtn = new JButton("¿ªÊ¼±à¼­");
-	bBtn = new JButton("¼Ó´Ö(B)");
+	final JButton editBtn = new JButton("å¼€å§‹ç¼–è¾‘");
+	bBtn = new JButton("åŠ ç²—(B)");
 	// bBtn = new JButton(new
 	// ImageIcon(getClass().getClassLoader().getResource("com/help/resources/bold.gif")));
-	// JButton styleBtn = new JButton("ÇãĞ±(I)");
-	iBtn = new JButton("ÇãĞ±(I)");
-	JButton sizeBtn = new JButton("´óĞ¡(S)");
+	// JButton styleBtn = new JButton("å€¾æ–œ(I)");
+	iBtn = new JButton("å€¾æ–œ(I)");
+	JButton sizeBtn = new JButton("å¤§å°(S)");
 
-	// ×ÖÌåÑÕÉ«¿Ø¼ş
+	// å­—ä½“é¢œè‰²æ§ä»¶
 	fontColorBox = Box.createHorizontalBox();
 	fontColorCombox = new JComboBox(Utils.ColorName.values());
 	fontColorBox.setBorder(BorderFactory.createTitledBorder(""));
-	fontColorBox.add(new JLabel("ÑÕÉ«£º"));
+	fontColorBox.add(new JLabel("é¢œè‰²ï¼š"));
 	fontColorBox.add(fontColorCombox);
 
-	// ×ÖÌå´óĞ¡¿Ø¼ş
+	// å­—ä½“å¤§å°æ§ä»¶
 	fontSizeCombox = new JComboBox();
 	Box fontSizeBox = Box.createHorizontalBox();
 	// fontSizeBox.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
@@ -127,19 +127,19 @@ public class EditorPanelW extends JPanel {
 	for (int i = 10; i < 50; i++) {
 	    fontSizeCombox.addItem(i);
 	}
-	fontSizeBox.add(new JLabel("´óĞ¡: "));
+	fontSizeBox.add(new JLabel("å¤§å°: "));
 	fontSizeBox.add(fontSizeCombox);
 
-	// ×ÖÌåÀàĞÍ¿Ø¼ş
+	// å­—ä½“ç±»å‹æ§ä»¶
 	Box fontTypeBox = Box.createHorizontalBox();
 	fontTypeCombox = new JComboBox(Utils.FontName.values());
 	fontTypeBox.setBorder(BorderFactory.createTitledBorder(""));
-	fontTypeBox.add(new JLabel("ÀàĞÍ£º"));
+	fontTypeBox.add(new JLabel("ç±»å‹ï¼š"));
 	fontTypeBox.add(fontTypeCombox);
 
 	// --------------
-	JButton colorBtn = new JButton("ÑÕÉ«(C)");
-	insetPicBtn = new JButton("²åÈëÍ¼Æ¬");
+	JButton colorBtn = new JButton("é¢œè‰²(C)");
+	insetPicBtn = new JButton("æ’å…¥å›¾ç‰‡");
 	// Font font = new Font(null, Font.PLAIN, 13);
 	// System.out.println(font.getFontName());
 	toolBar.add(editBtn);
@@ -156,8 +156,8 @@ public class EditorPanelW extends JPanel {
 	editorTabPanel.add(toolBar, BorderLayout.NORTH);
 	editorTabPanel.add(currentEditor, BorderLayout.CENTER);
 
-	// ÏÂÃæ¿ªÊ¼´¦ÀíÊÂ¼ş.......
-	// ¹â±êÍ£ÔÚ±à¼­ÇøÓòÄÚ
+	// ä¸‹é¢å¼€å§‹å¤„ç†äº‹ä»¶.......
+	// å…‰æ ‡åœåœ¨ç¼–è¾‘åŒºåŸŸå†…
 //	currentEditor.addCaretListener(new CaretListener() {
 //
 //	    public void caretUpdate(CaretEvent e) {
@@ -219,7 +219,7 @@ public class EditorPanelW extends JPanel {
 //
 //	});
 
-	// ¸Ä±ä´ÖÏ¸
+	// æ”¹å˜ç²—ç»†
 	bBtn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		StyledEditorKit kit = (StyledEditorKit) currentEditor.getEditorKit();
@@ -231,7 +231,7 @@ public class EditorPanelW extends JPanel {
 	    }
 	});
 
-	// ¸ÄÇãĞ±
+	// æ”¹å€¾æ–œ
 	iBtn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		StyledEditorKit kit = (StyledEditorKit) currentEditor.getEditorKit();
@@ -243,13 +243,13 @@ public class EditorPanelW extends JPanel {
 	    }
 	});
 
-	// ²åÈëÍ¼Æ¬
+	// æ’å…¥å›¾ç‰‡
 	insetPicBtn.addActionListener(new ActionListener() {
 
 	    public void actionPerformed(ActionEvent e) {
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setDialogTitle("Ñ¡ÔñÒª²åÈëµÄÍ¼Æ¬");
-		fileChooser.setApproveButtonText("È·¶¨");
+		fileChooser.setDialogTitle("é€‰æ‹©è¦æ’å…¥çš„å›¾ç‰‡");
+		fileChooser.setApproveButtonText("ç¡®å®š");
 		// editor.getStyledDocument().getDefaultRootElement();
 		if (currentEditor.getStyledDocument() == null) {
 		    System.out.println("editor is NULL ");
@@ -264,7 +264,7 @@ public class EditorPanelW extends JPanel {
 
 			@Override
 			public String getDescription() {
-			    return "Í¼Æ¬";
+			    return "å›¾ç‰‡";
 			}
 		    });
 		    int returnVal = fileChooser.showOpenDialog(getParent());
@@ -278,7 +278,7 @@ public class EditorPanelW extends JPanel {
 			    ImageIcon imageIcon = new ImageIcon(ImageIO.read(selectedFile));
 			    imageIcon.setDescription(selectedFile.getPath());
 			    currentEditor.insertIcon(imageIcon);
-			    // hack ³öÈëÍ¼Æ¬ºó»»ĞĞÊäÈëºº×ÖÊ±£¬Ä¬ÈÏÑÕÉ«¸Ä±ä
+			    // hack å‡ºå…¥å›¾ç‰‡åæ¢è¡Œè¾“å…¥æ±‰å­—æ—¶ï¼Œé»˜è®¤é¢œè‰²æ”¹å˜
 			    MutableAttributeSet attr = new SimpleAttributeSet();
 			    StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
 			    // Utils.setCharacterAttributes(currentEditor, attr,
@@ -294,7 +294,7 @@ public class EditorPanelW extends JPanel {
 	    }
 	});
 
-	// ¸Ä±äÑÕÉ«
+	// æ”¹å˜é¢œè‰²
 	colorBtn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		MutableAttributeSet attr = new SimpleAttributeSet();
@@ -324,7 +324,7 @@ public class EditorPanelW extends JPanel {
 	    }
 	});
 
-	// ¸Ä±ä´óĞ¡
+	// æ”¹å˜å¤§å°
 	sizeBtn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		MutableAttributeSet attr = new SimpleAttributeSet();
@@ -349,21 +349,21 @@ public class EditorPanelW extends JPanel {
 	    }
 	});
 
-	// ·ÖÎöÎÄµµ½á¹¹
+	// åˆ†ææ–‡æ¡£ç»“æ„
 	editBtn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		// ·ÖÎöÎÄµµ½á¹¹
+		// åˆ†ææ–‡æ¡£ç»“æ„
 		// DataService.getInstance().analysisDocument(currentEditor);
-		// JOptionPane.showMessageDialog(getParent(), "·ÖÎöÍê±Ï£¬¸ñÊ½ÕıÈ· £¡");
+		// JOptionPane.showMessageDialog(getParent(), "åˆ†æå®Œæ¯•ï¼Œæ ¼å¼æ­£ç¡® ï¼");
 		boolean editable = currentEditor.isEditable();
 		if (!editable) {
 		    currentEditor.setEditable(true);
 		    // enableOprator(true);
-		    editBtn.setText("Í£Ö¹±à¼­");
+		    editBtn.setText("åœæ­¢ç¼–è¾‘");
 		} else {
 		    currentEditor.setEditable(false);
 		    // enableOprator(false);
-		    editBtn.setText("¿ªÊ¼±à¼­");
+		    editBtn.setText("å¼€å§‹ç¼–è¾‘");
 		}
 	    }
 	});
@@ -379,10 +379,10 @@ public class EditorPanelW extends JPanel {
 	// }
 	// });
 
-	// Ô¤ÀÀÃæ°å
+	// é¢„è§ˆé¢æ¿
 	JPanel previewPanel = new JPanel();
 	previewPanel.setLayout(new BorderLayout());
-	JLabel tipLabel = new JLabel("½«Òª±£´æÎÄ¼şµÄ¸ñÊ½ÈçÏÂ£¬ÈçÓĞĞèÒª¿ÉÒÔÊÖ¶¯±à¼­ ......");
+	JLabel tipLabel = new JLabel("å°†è¦ä¿å­˜æ–‡ä»¶çš„æ ¼å¼å¦‚ä¸‹ï¼Œå¦‚æœ‰éœ€è¦å¯ä»¥æ‰‹åŠ¨ç¼–è¾‘ ......");
 	showArea = new JTextArea();
 	JPanel areaPanel = new JPanel();
 	areaPanel.setLayout(new BorderLayout());
@@ -390,8 +390,8 @@ public class EditorPanelW extends JPanel {
 	previewPanel.add(tipLabel, BorderLayout.NORTH);
 	previewPanel.add(new JScrollPane(showArea), BorderLayout.CENTER);
 
-	tabbedPane.add(editorTabPanel, "ÎÄ¼ş±à¼­Æ÷");
-	tabbedPane.add(new JScrollPane(previewPanel), "   Ô¤ÀÀ    ");
+	tabbedPane.add(editorTabPanel, "æ–‡ä»¶ç¼–è¾‘å™¨");
+	tabbedPane.add(new JScrollPane(previewPanel), "   é¢„è§ˆ    ");
 
 	JPanel mainPanel = new JPanel();
 	mainPanel.setBorder(BorderFactory.createEmptyBorder());
@@ -457,7 +457,7 @@ public class EditorPanelW extends JPanel {
     }
 
     private JTree createTree() {
-	CustomTreeNode root = new CustomTreeNode("°ïÖúÏµÍ³");
+	CustomTreeNode root = new CustomTreeNode("å¸®åŠ©ç³»ç»Ÿ");
 	CustomTreeNode load = new CustomTreeNode(CustomTreeNode.noFlag);
 	root.add(load);
 	customTree = new CustomTree(root);
@@ -480,41 +480,41 @@ public class EditorPanelW extends JPanel {
 	// test data
 	// Object[] objects = { root };
 	// customTree.setSelectionPath(new TreePath(objects));
-	// customTree.addCatalog("»ù±¾²Ù×÷");
+	// customTree.addCatalog("åŸºæœ¬æ“ä½œ");
 	// CustomTreeNode lastPathComponent = (CustomTreeNode)
 	// root.getChildAt(0);
 	// Object[] objects1 = { root, lastPathComponent };
 	// customTree.setSelectionPath(new TreePath(objects1));
-	// customTree.addContentTitle("Ö÷½çÃæ½éÉÜ");
-	// customTree.addContentTitle("¿ì½İ¼üÊ¹ÓÃ");
-	// customTree.addContentTitle("´ò×øĞĞ×ß");
+	// customTree.addContentTitle("ä¸»ç•Œé¢ä»‹ç»");
+	// customTree.addContentTitle("å¿«æ·é”®ä½¿ç”¨");
+	// customTree.addContentTitle("æ‰“åè¡Œèµ°");
 
-	// CustomTreeNode catalogNode = root.addCatalog("»ù±¾²Ù×÷");
-	// CustomTreeNode one = catalogNode.addContentTitle("Ö÷½çÃæ½éÉÜ");
-	// CustomTreeNode two = catalogNode.addContentTitle("¿ì½İ¼üÊ¹ÓÃ");
-	// CustomTreeNode three = catalogNode.addContentTitle("´ò×øĞĞ×ß");
+	// CustomTreeNode catalogNode = root.addCatalog("åŸºæœ¬æ“ä½œ");
+	// CustomTreeNode one = catalogNode.addContentTitle("ä¸»ç•Œé¢ä»‹ç»");
+	// CustomTreeNode two = catalogNode.addContentTitle("å¿«æ·é”®ä½¿ç”¨");
+	// CustomTreeNode three = catalogNode.addContentTitle("æ‰“åè¡Œèµ°");
 	// customTree.updateUI();
 
-	// ´´½¨¶ÔÓ¦editor
+	// åˆ›å»ºå¯¹åº”editor
 	// CustomEditor customEditor = new CustomEditor();
 	// addTextPaneMap(one, customEditor);
 	// addTextPaneMap(two, customEditor);
 	// addTextPaneMap(three, customEditor);
 
-	// ¸øÊ÷Ìí¼ÓÊÂ¼ş´¦Àí
+	// ç»™æ ‘æ·»åŠ äº‹ä»¶å¤„ç†
 	customTree.addTreeSelectionListener(new HelpTreeSelecListener());
 	return customTree;
 
     }
 
     // /**
-    // * ¼ì²éÎÄµµÆ¬¶Î¸ñÊ½ÊÇ·ñÊÇÆÕÍ¨¸ñÊ½£¬
-    // * Èç¹û¸ÃÎÄµµÆ¬¶ÎÓĞ£º¼Ó´Ö£¬×ÖÌå²»µÈÓÚ15£¬ÑÕÉ«²»µÈÓÚÄ¬ÈÏÖµµÈÇé¿öÖ®Ò»Ôò½«¸ñÊ½ĞÅÏ¢ÌáÈ¡³öÀ´ÓÃÓÚ¹¹Ôì°üº¬¸ñÊ½ĞÅÏ¢µÄ×Ö·û´®£¬·ñÔòÖ±½Ó·µ»Ø×Ö·û´®
+    // * æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µæ ¼å¼æ˜¯å¦æ˜¯æ™®é€šæ ¼å¼ï¼Œ
+    // * å¦‚æœè¯¥æ–‡æ¡£ç‰‡æ®µæœ‰ï¼šåŠ ç²—ï¼Œå­—ä½“ä¸ç­‰äº15ï¼Œé¢œè‰²ä¸ç­‰äºé»˜è®¤å€¼ç­‰æƒ…å†µä¹‹ä¸€åˆ™å°†æ ¼å¼ä¿¡æ¯æå–å‡ºæ¥ç”¨äºæ„é€ åŒ…å«æ ¼å¼ä¿¡æ¯çš„å­—ç¬¦ä¸²ï¼Œå¦åˆ™ç›´æ¥è¿”å›å­—ç¬¦ä¸²
     // *
     // * @param attributeSet
-    // * ´ı¼ì²éÎÄµµÆ¬¶ÎµÄ¸ñÊ½ÊôĞÔ
+    // * å¾…æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µçš„æ ¼å¼å±æ€§
     // * @param result
-    // * ´ı¼ì²éÎÄµµÆ¬¶Î
+    // * å¾…æ£€æŸ¥æ–‡æ¡£ç‰‡æ®µ
     // * @return
     // */
     // public String analysisStyle(AttributeSet attributeSet, String result) {
@@ -524,19 +524,19 @@ public class EditorPanelW extends JPanel {
     // boolean isBold = StyleConstants.isBold(attributeSet);
     //
     // String conventColorString = convertToColorName(foreground);
-    // // ³£¹æ¸ñÊ½ÔòÖ±½Ó·µ»Ø
+    // // å¸¸è§„æ ¼å¼åˆ™ç›´æ¥è¿”å›
     // if (fontSize == 15 && foreground == rightFontColor && !isBold) {
     // return result;
     // } else {
-    // // <<font size='15' color='normal_color' name='ËÎÌå' style='B'>>
-    // stringBuffer.append("<<font size='").append(fontSize).append("' color='").append(conventColorString).append("' name='ËÎÌå'").append(isBold
+    // // <<font size='15' color='normal_color' name='å®‹ä½“' style='B'>>
+    // stringBuffer.append("<<font size='").append(fontSize).append("' color='").append(conventColorString).append("' name='å®‹ä½“'").append(isBold
     // ? " style='B'>>" : ">>").append(result)
     // .append("<</font>>");
     // return stringBuffer.toString();
     // }
     //
     // }
-    // todo Ìí¼ÓÊ¹ÄÜ°´Å¥Ãæ°å
+    // todo æ·»åŠ ä½¿èƒ½æŒ‰é’®é¢æ¿
 //    private void enableOprator(boolean isAble) {
 //	fontTypeCombox.setEditable(isAble);
 //	fontSizeCombox.setEditable(isAble);
@@ -550,7 +550,7 @@ public class EditorPanelW extends JPanel {
 //    }
 
     /**
-     * Ê÷ĞÎ½á¹¹Ñ¡Ôñ¼àÌı£¬µ±Ñ¡ÔñÒ»¸ö½ÚµãÊ±£¬ĞèÒª½âÎö¸Ã½ÚµãµÄcontent£¬²¢ÏÔÊ¾
+     * æ ‘å½¢ç»“æ„é€‰æ‹©ç›‘å¬ï¼Œå½“é€‰æ‹©ä¸€ä¸ªèŠ‚ç‚¹æ—¶ï¼Œéœ€è¦è§£æè¯¥èŠ‚ç‚¹çš„contentï¼Œå¹¶æ˜¾ç¤º
      * 
      * @author qifan.yang
      * 
@@ -572,7 +572,7 @@ public class EditorPanelW extends JPanel {
 		}
 	    }
 	    // TreePath oldTreePath = e.getOldLeadSelectionPath();
-	    // ÓÃ¿ªÊ¼±à¼­Õâ¸ö°´Å¥À´¿ØÖÆ¸ÃÎÄÕÂÊÇ·ñÒÑ¾­·¢Éú¸Ä±ä
+	    // ç”¨å¼€å§‹ç¼–è¾‘è¿™ä¸ªæŒ‰é’®æ¥æ§åˆ¶è¯¥æ–‡ç« æ˜¯å¦å·²ç»å‘ç”Ÿæ”¹å˜
 	    // if (oldTreePath != null) {
 	    // CustomTreeNode oldNode = (CustomTreeNode)
 	    // oldTreePath.getLastPathComponent();
@@ -580,9 +580,9 @@ public class EditorPanelW extends JPanel {
 	    // if (helpNode != null && helpNode.isChange()) {
 	    // String analysisResult =
 	    // DataService.getInstance().analysisDocument(currentEditor);
-	    // ·ÖÎö±à¼­Æ÷ÀïÃæµÄÄÚÈİ£¬
+	    // åˆ†æç¼–è¾‘å™¨é‡Œé¢çš„å†…å®¹ï¼Œ
 	    // String analysisResult = currentEditor.analysisDocument();
-	    // helpNode.setContent(analysisResult);// ¸üĞÂÆäÖĞµÄÄÚÈİ£¬ÀàËÆ±£´æ
+	    // helpNode.setContent(analysisResult);// æ›´æ–°å…¶ä¸­çš„å†…å®¹ï¼Œç±»ä¼¼ä¿å­˜
 	    // }
 	    // System.out.println("=================================================================");
 	    // System.out.println(analysisResult);
@@ -601,7 +601,7 @@ public class EditorPanelW extends JPanel {
 	    // editorTabPanel.validate();
 	    // // currentEditor.repaint();
 	    // } else {
-	    // ÓÅ»¯£¬Í¬ÓÃÒ»¸öEditor
+	    // ä¼˜åŒ–ï¼ŒåŒç”¨ä¸€ä¸ªEditor
 	    // ===================
 	    // final HelpNode currentHelpNode =
 	    // customTree.getHelpNode(lastPathComponent);
@@ -620,7 +620,7 @@ public class EditorPanelW extends JPanel {
 	    // // currentHelpNode.getContent(), null);
 	    // System.out.println("ok");
 	    // if
-	    // (lastPathComponent.getUserObject().toString().equals("°ïÖúÏµÍ³"))
+	    // (lastPathComponent.getUserObject().toString().equals("å¸®åŠ©ç³»ç»Ÿ"))
 	    // {
 	    // currentEditor.showIndex();
 	    // }

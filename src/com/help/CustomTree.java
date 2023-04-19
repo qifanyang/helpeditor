@@ -21,7 +21,7 @@ import java.util.Map;
 public class CustomTree extends JTree {
     private static final long serialVersionUID = 1L;
     // public static final String loadFlag = "loading...";
-    // public static final String noFlag = "ÎŞÄÚÈİ...";
+    // public static final String noFlag = "æ— å†…å®¹...";
     private JLabel label;
     private CustomTreeNode rootNode;
     private Map<CustomTreeNode, HelpNode> helpTreeMap = Collections.synchronizedMap(new HashMap<CustomTreeNode, HelpNode>());
@@ -32,17 +32,17 @@ public class CustomTree extends JTree {
 	this.rootNode = root;
 	// this.editorPanel = editorPanel;
 	// inti node
-	// CustomTreeNode root = new CustomTreeNode("°ïÖúÏµÍ³");
+	// CustomTreeNode root = new CustomTreeNode("å¸®åŠ©ç³»ç»Ÿ");
 	// CustomTreeNode load = new CustomTreeNode(CustomTreeNode.noFlag);
 	// root.add(load);
 
-	// ´´½¨µ¯³ö²Ëµ¥
+	// åˆ›å»ºå¼¹å‡ºèœå•
 	final JPopupMenu treePopupMenu = new JPopupMenu();
-	final JMenuItem addCatalogMenuItem = new JMenuItem("Ìí¼ÓÄ¿Â¼");
-	final JMenuItem addContentMenuItem = new JMenuItem("Ìí¼ÓÕıÎÄ");
-	// final JMenuItem editContentMenuItem = new JMenuItem("±à¼­ÕıÎÄ");
-	final JMenuItem renameMenuItem = new JMenuItem("ÖØÃüÃû");
-	final JMenuItem delMenuItem = new JMenuItem("É¾³ı");
+	final JMenuItem addCatalogMenuItem = new JMenuItem("æ·»åŠ ç›®å½•");
+	final JMenuItem addContentMenuItem = new JMenuItem("æ·»åŠ æ­£æ–‡");
+	// final JMenuItem editContentMenuItem = new JMenuItem("ç¼–è¾‘æ­£æ–‡");
+	final JMenuItem renameMenuItem = new JMenuItem("é‡å‘½å");
+	final JMenuItem delMenuItem = new JMenuItem("åˆ é™¤");
 	treePopupMenu.setInvoker(this);
 	treePopupMenu.add(addCatalogMenuItem);
 	// treePopupMenu.add(new JPopupMenu.Separator());
@@ -72,7 +72,7 @@ public class CustomTree extends JTree {
 			addContentMenuItem.setEnabled(true);
 			renameMenuItem.setEnabled(true);
 			delMenuItem.setEnabled(true);
-		    // µ¯³ö²Ëµ¥¹ıÂË£¬µ±Îª¸ù½ÚµãÊ±£¬²»¿É±à¼­£¬²»¿ÉÖØÃüÃû£¬²»¿ÉÉ¾³ı
+		    // å¼¹å‡ºèœå•è¿‡æ»¤ï¼Œå½“ä¸ºæ ¹èŠ‚ç‚¹æ—¶ï¼Œä¸å¯ç¼–è¾‘ï¼Œä¸å¯é‡å‘½åï¼Œä¸å¯åˆ é™¤
 		    if (lastPathComponent.getParent() == null) {
 			// editContentMenuItem.setEnabled(false);
 			renameMenuItem.setEnabled(false);
@@ -85,7 +85,7 @@ public class CustomTree extends JTree {
 			delMenuItem.setEnabled(true);
 		    }
 
-		    // µ±ÎªÕıÎÄ½ÚµãÊ±£¬²»¿ÉÌí¼ÓÄ¿Â¼£¬²»¿ÉÌí¼ÓÕıÎÄ
+		    // å½“ä¸ºæ­£æ–‡èŠ‚ç‚¹æ—¶ï¼Œä¸å¯æ·»åŠ ç›®å½•ï¼Œä¸å¯æ·»åŠ æ­£æ–‡
 //		    if (lastPathComponent.getChildCount() <= 0 && !lastPathComponent.toString().equalsIgnoreCase(CustomTreeNode.noFlag)) {
 //			addCatalogMenuItem.setEnabled(false);
 //			addContentMenuItem.setEnabled(false);
@@ -97,7 +97,7 @@ public class CustomTree extends JTree {
 //			addContentMenuItem.setEnabled(true);
 //		    }
 
-		    // µ¯³ö²Ëµ¥¹ıÂË£¬µ±Îªnoflag½ÚµãÊ±,do nothing
+		    // å¼¹å‡ºèœå•è¿‡æ»¤ï¼Œå½“ä¸ºnoflagèŠ‚ç‚¹æ—¶,do nothing
 		    if (lastPathComponent.toString().equalsIgnoreCase(CustomTreeNode.noFlag)) {
 			addCatalogMenuItem.setEnabled(false);
 			addContentMenuItem.setEnabled(false);
@@ -115,21 +115,21 @@ public class CustomTree extends JTree {
 	    }
 	});
 
-	// ÔÚÕâÀï´¦ÀíÌí¼ÓÄ¿Â¼ÊÂ¼ş £¬Ìí¼ÓÒ»¸öĞÂµÄÄ¿Â¼½Úµã
+	// åœ¨è¿™é‡Œå¤„ç†æ·»åŠ ç›®å½•äº‹ä»¶ ï¼Œæ·»åŠ ä¸€ä¸ªæ–°çš„ç›®å½•èŠ‚ç‚¹
 	addCatalogMenuItem.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		String catalogName = JOptionPane.showInputDialog(getParent(), "ÇëÊäÈëÄ¿Â¼Ãû³Æ", "ĞÂÔöÄ¿Â¼", JOptionPane.INFORMATION_MESSAGE);
+		String catalogName = JOptionPane.showInputDialog(getParent(), "è¯·è¾“å…¥ç›®å½•åç§°", "æ–°å¢ç›®å½•", JOptionPane.INFORMATION_MESSAGE);
 		if (catalogName != null) {
 		    if (catalogName.length() == 0) {// JDK6 use result.isEmpty()
-			JOptionPane.showMessageDialog(getParent(), "Ä¿Â¼Ãû²»ÄÜÎª¿Õ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(getParent(), "ç›®å½•åä¸èƒ½ä¸ºç©º ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 		    } else {
 			TreePath selectionPath = getSelectionPath();
 			CustomTreeNode lastPathComponent = (CustomTreeNode) selectionPath.getLastPathComponent();
 			CustomTreeNode parenTreeNode = (CustomTreeNode) lastPathComponent.getParent();
 			CustomTreeNode addCatalogNode = lastPathComponent.addCatalog(catalogName.trim());
-			// Ìí¼ÓÄ¿Â¼Ê±ĞèÒªÌí¼ÓÓ³Éäµ½mapÖĞ
+			// æ·»åŠ ç›®å½•æ—¶éœ€è¦æ·»åŠ æ˜ å°„åˆ°mapä¸­
 			HelpNode helpNode = new HelpNode(catalogName);
-			if (parenTreeNode == null) {// ÊÇÊ÷¸ù½Úµã
+			if (parenTreeNode == null) {// æ˜¯æ ‘æ ¹èŠ‚ç‚¹
 			    HelpNode helpRootNode = getHelpNode(lastPathComponent);
 			    helpRootNode.addNode(helpNode);
 			} else {
@@ -143,22 +143,22 @@ public class CustomTree extends JTree {
 	    }
 	});
 
-	// ÔÚÕâÀï´¦ÀíÌí¼ÓÕıÎÄÊÂ¼ş £¬Ìí¼ÓÒ»¸öĞÂµÄÕıÎÄ½Úµã
+	// åœ¨è¿™é‡Œå¤„ç†æ·»åŠ æ­£æ–‡äº‹ä»¶ ï¼Œæ·»åŠ ä¸€ä¸ªæ–°çš„æ­£æ–‡èŠ‚ç‚¹
 	addContentMenuItem.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		// Ìí¼Ó½Úµã
-		String contentTitle = JOptionPane.showInputDialog(getParent(), "ÇëÊäÈëÕıÎÄÃû³Æ", "ĞÂÔöÕıÎÄ", JOptionPane.INFORMATION_MESSAGE);
+		// æ·»åŠ èŠ‚ç‚¹
+		String contentTitle = JOptionPane.showInputDialog(getParent(), "è¯·è¾“å…¥æ­£æ–‡åç§°", "æ–°å¢æ­£æ–‡", JOptionPane.INFORMATION_MESSAGE);
 		if (contentTitle != null) {
 		    if (contentTitle.length() == 0) {// JDK6 use
-			JOptionPane.showMessageDialog(getParent(), "ÕıÎÄÃû²»ÄÜÎª¿Õ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(getParent(), "æ­£æ–‡åä¸èƒ½ä¸ºç©º ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 		    } else {
 			TreePath selectionPath = getSelectionPath();
 			CustomTreeNode lastPathComponent = (CustomTreeNode) selectionPath.getLastPathComponent();
 			CustomTreeNode parenTreeNode = (CustomTreeNode) lastPathComponent.getParent();
 			CustomTreeNode addContentNode = lastPathComponent.addContentTitle(contentTitle.trim());
-			// Ìí¼ÓÕıÎÄÊ±ĞèÒªÌí¼ÓÓ³Éäµ½mapÖĞ
+			// æ·»åŠ æ­£æ–‡æ—¶éœ€è¦æ·»åŠ æ˜ å°„åˆ°mapä¸­
 			HelpNode helpNode = new HelpNode(contentTitle);
-			if (parenTreeNode == null) {// ÊÇÊ÷¸ù½Úµã
+			if (parenTreeNode == null) {// æ˜¯æ ‘æ ¹èŠ‚ç‚¹
 			    HelpNode helpRootNode = getHelpNode(lastPathComponent);
 			    helpRootNode.addNode(helpNode);
 
@@ -177,10 +177,10 @@ public class CustomTree extends JTree {
 	    public void actionPerformed(ActionEvent e) {
 		CustomTreeNode lastPathComponent = (CustomTreeNode) getSelectionPath().getLastPathComponent();
 		if (lastPathComponent != null) {
-		    String newName = JOptionPane.showInputDialog(getParent(), "ÇëÊäÈëĞÂÃû³Æ", "ÖØÃüÃû", JOptionPane.INFORMATION_MESSAGE);
+		    String newName = JOptionPane.showInputDialog(getParent(), "è¯·è¾“å…¥æ–°åç§°", "é‡å‘½å", JOptionPane.INFORMATION_MESSAGE);
 		    if (newName != null) {
 			if (newName.length() == 0) {// JDK6 use result.isEmpty()
-			    JOptionPane.showMessageDialog(getParent(), "Ãû³Æ²»ÄÜÎª¿Õ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+			    JOptionPane.showMessageDialog(getParent(), "åç§°ä¸èƒ½ä¸ºç©º ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 			} else {
 			    // if (lastPathComponent.isLeaf()) {
 			    lastPathComponent.setUserObject(newName);
@@ -200,10 +200,10 @@ public class CustomTree extends JTree {
 		if (selectionPath != null) {
 		    CustomTreeNode lastPathComponent = (CustomTreeNode) selectionPath.getLastPathComponent();
 		    CustomTreeNode parent = (CustomTreeNode) lastPathComponent.getParent();
-		    int result = JOptionPane.showConfirmDialog(getParent(), "È·ÈÏÊÇ·ñÉ¾³ı£¬É¾³ıºóÊı¾İ²»¿É»Ö¸´ £¿", "¾¯¸æ", JOptionPane.YES_NO_OPTION);
+		    int result = JOptionPane.showConfirmDialog(getParent(), "ç¡®è®¤æ˜¯å¦åˆ é™¤ï¼Œåˆ é™¤åæ•°æ®ä¸å¯æ¢å¤ ï¼Ÿ", "è­¦å‘Š", JOptionPane.YES_NO_OPTION);
 		    if (result == JOptionPane.OK_OPTION) {
 			System.out.println("yes del");
-			// ÒÆ³ıÊ÷ĞÎ½á¹¹ÖĞµÄ½Úµã
+			// ç§»é™¤æ ‘å½¢ç»“æ„ä¸­çš„èŠ‚ç‚¹
 			HelpNode childrenHelpNode = getHelpNode(lastPathComponent);
 			HelpNode parentHelpNode = getHelpNode(parent);
 			parentHelpNode.removeNode(childrenHelpNode);
@@ -222,12 +222,12 @@ public class CustomTree extends JTree {
     }
 
     /**
-     * Ìí¼ÓĞÂ½ÚµãÊ±£¬¼ì²é½ÚµãnodeÏÂÃæµÄ½Úµã£¬ÒÆ³ınoflag±êÖ¾
+     * æ·»åŠ æ–°èŠ‚ç‚¹æ—¶ï¼Œæ£€æŸ¥èŠ‚ç‚¹nodeä¸‹é¢çš„èŠ‚ç‚¹ï¼Œç§»é™¤noflagæ ‡å¿—
      * 
      * @param node
      */
     public void checkChildNode(CustomTreeNode node) {
-	// ±éÀú ¼ì²éÊÇ·ñÓĞÖØÃû
+	// éå† æ£€æŸ¥æ˜¯å¦æœ‰é‡å
 	for (int i = 0; i < node.getChildCount(); i++) {
 	    TreeNode child = node.getChildAt(i);
 	    if (child.toString().equalsIgnoreCase(CustomTreeNode.noFlag)) {
@@ -263,7 +263,7 @@ public class CustomTree extends JTree {
     }
 
     /**
-     * µİ¹é½«helpNodeÏÂÃæµÄ½Úµã¶ÔÓ¦µ½treeNodeÏÂÃæ
+     * é€’å½’å°†helpNodeä¸‹é¢çš„èŠ‚ç‚¹å¯¹åº”åˆ°treeNodeä¸‹é¢
      * 
      * @param helpNode
      * @param treeNode
@@ -288,32 +288,32 @@ public class CustomTree extends JTree {
 
     /**
      * 
-     * Ê÷ĞÎ¼àÌıÀà£ºµ±ÇĞ»»ÎÄµµÊ±£¬¸ù¾İ½ÓµãĞÅÏ¢ÏÈ±£´æ£¬È»ºóÔÙ´ò¿ªĞÂµÄÎÄµµ
+     * æ ‘å½¢ç›‘å¬ç±»ï¼šå½“åˆ‡æ¢æ–‡æ¡£æ—¶ï¼Œæ ¹æ®æ¥ç‚¹ä¿¡æ¯å…ˆä¿å­˜ï¼Œç„¶åå†æ‰“å¼€æ–°çš„æ–‡æ¡£
      * 
      * 
      * 
      */
-    // todo ĞèÒªÊµÏÖ×Ô¶¯±£´æ,ÓÃ¶¨Ê±Æ÷ÊµÏÖ
+    // todo éœ€è¦å®ç°è‡ªåŠ¨ä¿å­˜,ç”¨å®šæ—¶å™¨å®ç°
     class HelpTreeSelecListener implements TreeSelectionListener {
 
 	public void valueChanged(TreeSelectionEvent e) {
 
 	    TreePath oldTreePath = e.getOldLeadSelectionPath();
-	    // Ê×ÏÈ±£´æÉÏÒ»¸öÎÄµµ£¬²»±£´æÊ×Ò³
+	    // é¦–å…ˆä¿å­˜ä¸Šä¸€ä¸ªæ–‡æ¡£ï¼Œä¸ä¿å­˜é¦–é¡µ
 	    if (oldTreePath != null && !DataService.getInstance().isHome()) {
 		CustomTreeNode oldNode = (CustomTreeNode) oldTreePath.getLastPathComponent();
 		HelpNode helpNode = getHelpNode(oldNode);
-		// ·ÖÎö±à¼­Æ÷ÀïÃæµÄÄÚÈİ£¬¸üĞÂHelpNodeÀïÃæµÄ¼ÇÂ¼
+		// åˆ†æç¼–è¾‘å™¨é‡Œé¢çš„å†…å®¹ï¼Œæ›´æ–°HelpNodeé‡Œé¢çš„è®°å½•
 		String analysisResult = DataService.getInstance().analysisDocument();
-		if (analysisResult != null && helpNode != null && !analysisResult.startsWith("ÇëÔÚÕâÀïÊäÈëÕıÎÄ.....")) {
+		if (analysisResult != null && helpNode != null && !analysisResult.startsWith("è¯·åœ¨è¿™é‡Œè¾“å…¥æ­£æ–‡.....")) {
 		    helpNode.setContent(analysisResult);
 		}
 	    }
-	    // ÏÔÊ¾ĞÂµÄÎÄµµ£¬µ±µã»÷¸ù½ÚµãÏÔÊ¾Ê×Ò³
+	    // æ˜¾ç¤ºæ–°çš„æ–‡æ¡£ï¼Œå½“ç‚¹å‡»æ ¹èŠ‚ç‚¹æ˜¾ç¤ºé¦–é¡µ
 	    CustomTreeNode lastPathComponent = (CustomTreeNode) e.getPath().getLastPathComponent();
 	    if (lastPathComponent != null) {
 		if (lastPathComponent.toString().equalsIgnoreCase(CustomTreeNode.noFlag)) {
-		    JOptionPane.showMessageDialog(getParent(), "¸Ã½Úµã²»¿É±à¼­£¬ÕâÖ»ÊÇÒ»¸öÎŞÄÚÈİ±êÊ¶£¬²»»á±£´æ £¡", "¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+		    JOptionPane.showMessageDialog(getParent(), "è¯¥èŠ‚ç‚¹ä¸å¯ç¼–è¾‘ï¼Œè¿™åªæ˜¯ä¸€ä¸ªæ— å†…å®¹æ ‡è¯†ï¼Œä¸ä¼šä¿å­˜ ï¼", "è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 		    Object[] path = e.getPath().getPath();
 		    ArrayList<Object> arrayList = null;
 		    for (int i = 0; i < path.length - 1; i++) {
@@ -363,7 +363,7 @@ public class CustomTree extends JTree {
     // JTextPane textPane = new JTextPane();
     // textPane.setBackground(Utils.BACKGROUD_COLOR);
     //
-    // CustomTreeNode root = new CustomTreeNode("°ïÖúÏµÍ³");
+    // CustomTreeNode root = new CustomTreeNode("å¸®åŠ©ç³»ç»Ÿ");
     // CustomTreeNode load = new CustomTreeNode(CustomTreeNode.noFlag);
     // root.add(load);
     // CustomTree myTree = new CustomTree(root);

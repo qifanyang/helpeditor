@@ -7,19 +7,19 @@ import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 
 /**
- * ×Ô¶¨ÒåµÄJTextPane£¬Ö÷ÒªÊÇÌí¼Ó´´½¨Ê±£¬³õÊ¼»¯×ÖÌåÊôÐÔ
+ * è‡ªå®šä¹‰çš„JTextPaneï¼Œä¸»è¦æ˜¯æ·»åŠ åˆ›å»ºæ—¶ï¼Œåˆå§‹åŒ–å­—ä½“å±žæ€§
  * 
  * @author qifan.yang
  * 
  */
-//todo ÔÝÊ±²»É¾³ý£¬ÕâÀïÓÐ¹¦ÄÜ´úÂë
+//todo æš‚æ—¶ä¸åˆ é™¤ï¼Œè¿™é‡Œæœ‰åŠŸèƒ½ä»£ç 
 public class CustomEditor extends JTextPane {
 
     private static final long serialVersionUID = 1L;
 
     public CustomEditor() {
 	// Font initFont = new Font(null, Font.PLAIN, 15);
-	// // Í³Ò»ÉèÖÃÎÄ×ÖÑÕÉ«
+	// // ç»Ÿä¸€è®¾ç½®æ–‡å­—é¢œè‰²
 	// MutableAttributeSet attr = new SimpleAttributeSet();
 	// StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
 	// this.setCharacterAttributes(attr, true);
@@ -32,7 +32,7 @@ public class CustomEditor extends JTextPane {
     }
 
     /**
-     * ½âÎöhelpNode½ÚµãÄÚÈÝ
+     * è§£æžhelpNodeèŠ‚ç‚¹å†…å®¹
      * 
      * @param node
      * @throws BadLocationException
@@ -40,7 +40,7 @@ public class CustomEditor extends JTextPane {
     public void showCotent(HelpNode node) throws BadLocationException {
 	System.out.println("Document Lenth :"+getDocument().getLength());
 	MutableAttributeSet attr = new SimpleAttributeSet();
-//	String ww = "sfasdjflsjÈø´ïÀë¿ª»ý·ÖÊ¹¼¡·ô ¾àÀëÊ¥µ®½Ú·ÖÀàÊý¾Ý·¨ÂÉÊÇ·ñ¾àÀëÊ¥µ®½Ú·èÁË¿ìË¯¾õµÄ·ëÉÜ·åÀÏÊ¦»ý·ÖÊÇ¸£½¨Ê¿´ó·ò\nÀë¿ªÊ±´ó¼Ò·É¾ÍÊÇÀ´µÃ¿ì¸½½üÀ­Êµ¼ÊµÃ·Ö½âÊÍµÀ·¢Éú½­¶«¸¸ÀÏ¿ªÊ¼¾õµÃ·­¿ªÀúÊ·´ó½ã·òÁËË¹¿Â´ï½â·ÅÂ·ÉÏ\n´ò¿ª¸½¼þÉñÁúµº·ÉsfasdjflsjÈø´ïÀë¿ª»ý·ÖÊ¹¼¡·ô ¾àÀëÊ¥µ®½Ú·ÖÀàÊý¾Ý·¨ÂÉÊÇ·ñ¾àÀëÊ¥µ®½Ú·èÁË¿ìË¯¾õµÄ·ëÉÜ·åÀÏÊ¦»ý·ÖÊÇ¸£½¨Ê¿´ó·ò\nÀë¿ªÊ±´ó¼Ò·É¾ÍÊÇÀ´µÃ¿ì¸½½üÀ­Êµ¼ÊµÃ·Ö½âÊÍµÀ·¢Éú½­¶«¸¸ÀÏ¿ªÊ¼¾õµÃ·­¿ªÀúÊ·´ó½ã·òÁËË¹¿Â´ï½â·ÅÂ·ÉÏ\n´ò¿ª¸½¼þÉñÁúµº·É";
+//	String ww = "sfasdjflsjè¨è¾¾ç¦»å¼€ç§¯åˆ†ä½¿è‚Œè‚¤ è·ç¦»åœ£è¯žèŠ‚åˆ†ç±»æ•°æ®æ³•å¾‹æ˜¯å¦è·ç¦»åœ£è¯žèŠ‚ç–¯äº†å¿«ç¡è§‰çš„å†¯ç»å³°è€å¸ˆç§¯åˆ†æ˜¯ç¦å»ºå£«å¤§å¤«\nç¦»å¼€æ—¶å¤§å®¶é£žå°±æ˜¯æ¥å¾—å¿«é™„è¿‘æ‹‰å®žé™…å¾—åˆ†è§£é‡Šé“å‘ç”Ÿæ±Ÿä¸œçˆ¶è€å¼€å§‹è§‰å¾—ç¿»å¼€åŽ†å²å¤§å§å¤«äº†æ–¯æŸ¯è¾¾è§£æ”¾è·¯ä¸Š\næ‰“å¼€é™„ä»¶ç¥žé¾™å²›é£žsfasdjflsjè¨è¾¾ç¦»å¼€ç§¯åˆ†ä½¿è‚Œè‚¤ è·ç¦»åœ£è¯žèŠ‚åˆ†ç±»æ•°æ®æ³•å¾‹æ˜¯å¦è·ç¦»åœ£è¯žèŠ‚ç–¯äº†å¿«ç¡è§‰çš„å†¯ç»å³°è€å¸ˆç§¯åˆ†æ˜¯ç¦å»ºå£«å¤§å¤«\nç¦»å¼€æ—¶å¤§å®¶é£žå°±æ˜¯æ¥å¾—å¿«é™„è¿‘æ‹‰å®žé™…å¾—åˆ†è§£é‡Šé“å‘ç”Ÿæ±Ÿä¸œçˆ¶è€å¼€å§‹è§‰å¾—ç¿»å¼€åŽ†å²å¤§å§å¤«äº†æ–¯æŸ¯è¾¾è§£æ”¾è·¯ä¸Š\næ‰“å¼€é™„ä»¶ç¥žé¾™å²›é£ž";
 	this.getDocument().remove(0, this.getDocument().getLength());
 	String content = node.getContent();
 	if (content == null)
@@ -57,14 +57,14 @@ public class CustomEditor extends JTextPane {
 	// while (scanner.hasNext()) {
 	// String next = scanner.next();
 	// System.out.println(next);
-	// // ½âÎö´¿ÎÄ±¾
+	// // è§£æžçº¯æ–‡æœ¬
 	// if (!next.contains(">>") && !next.contains(">")) {
-	// // Ã»ÓÐ°üº¬¡±>>¡°£¬ËµÃ÷ÊÇ´¿ÎÄ±¾
+	// // æ²¡æœ‰åŒ…å«â€>>â€œï¼Œè¯´æ˜Žæ˜¯çº¯æ–‡æœ¬
 	// this.getDocument().insertString(getCaretPosition(), next, null);
 	// // System.out.println(next);
 	// next = null;
 	//
-	// } else if (next.trim().startsWith("br>>")) {// ½âÎö»»ÐÐ Ö÷Òª½á¹¹ 1:br>> ,2:
+	// } else if (next.trim().startsWith("br>>")) {// è§£æžæ¢è¡Œ ä¸»è¦ç»“æž„ 1:br>> ,2:
 	// // br>> sdfsdfsdfd
 	// String[] splitBr = next.split(">>");
 	//
@@ -80,11 +80,11 @@ public class CustomEditor extends JTextPane {
 	// for (int i = 0; i < splitBr.length; i++) {
 	// splitBr[i] = null;
 	// }
-	// // ½âÎöÍ¼Æ¬
+	// // è§£æžå›¾ç‰‡
 	// } else if (next.startsWith("pic>")) {
 	// String[] picSplit = next.split(">");
 	// // picSplit[1]==image name
-	// // ÔÝÊ±ÓÃÒ»ÕÅÍ¼Æ¬Ìæ´ú
+	// // æš‚æ—¶ç”¨ä¸€å¼ å›¾ç‰‡æ›¿ä»£
 	// if (picSplit.length > 1) {
 	// ImageIcon imageIcon = new
 	// ImageIcon(getClass().getResource("help.png"));
@@ -94,12 +94,12 @@ public class CustomEditor extends JTextPane {
 	// for (int i = 0; i < picSplit.length; i++) {
 	// picSplit[i] = null;
 	// }
-	// // ½âÎöÓÐ¸ñÊ½µÄÎÄ×Ö
+	// // è§£æžæœ‰æ ¼å¼çš„æ–‡å­—
 	// } else {
 	// if (next.toLowerCase().startsWith("font ")) {
-	// String[] splitAC = next.split(">>");// 0:ÊôÐÔ£¬1£ºÄÚÈÝ
+	// String[] splitAC = next.split(">>");// 0:å±žæ€§ï¼Œ1ï¼šå†…å®¹
 	//
-	// // ´¦ÀíÊôÐÔ
+	// // å¤„ç†å±žæ€§
 	// String[] fontAttr = splitAC[0].split(" ");
 	// // MutableAttributeSet attr = new SimpleAttributeSet();
 	// StyleConstants.setFontSize(attr, 16);
@@ -121,7 +121,7 @@ public class CustomEditor extends JTextPane {
 	// StyleConstants.setForeground(attr, colorNames[j].getColor());
 	// break;
 	// } else {
-	// StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);// Ã»ÓÐÆ¥Åä
+	// StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);// æ²¡æœ‰åŒ¹é…
 	// }
 	// }
 	// // StyleConstants.setForeground(attr, fg)
@@ -137,11 +137,11 @@ public class CustomEditor extends JTextPane {
 	//
 	// // Utils.setCharacterAttributes(this, attr, true);
 	// setCharacterAttributes(attr, false);
-	// // ´¦ÀíÄÚÈÝ
+	// // å¤„ç†å†…å®¹
 	// this.getDocument().insertString(getCaretPosition(), splitAC[1],
 	// attr);
 	// // System.out.println(splitAC[1]);
-	// // ½áÊøÊôÐÔ
+	// // ç»“æŸå±žæ€§
 	// // scanner.useDelimiter(">>");
 	// scanner.next();
 	// // scanner.useDelimiter("<<");
@@ -163,7 +163,7 @@ public class CustomEditor extends JTextPane {
 //	ImageIcon imageIcon = new ImageIcon(getClass().getResource("long.png"));
 //	try {
 //	    this.getDocument().remove(0, this.getDocument().getLength());
-//	    this.getDocument().insertString(getCaretPosition(), "  °ïÖúÎÄµµ±à¼­Æ÷ V2.0", attr);
+//	    this.getDocument().insertString(getCaretPosition(), "  å¸®åŠ©æ–‡æ¡£ç¼–è¾‘å™¨ V2.0", attr);
 //	    this.insertIcon(imageIcon);
 //	    this.setEditable(false);
 //	    // currentEditor.setCharacterAttributes(attr2, false);

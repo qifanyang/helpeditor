@@ -32,7 +32,7 @@ import javax.swing.text.StyledEditorKit;
 import com.help.Utils.ColorName;
 
 /**
- * ´ËÀàÍê³ÉÎÄ×Ö±à¼­¹¦ÄÜ£¬ÑÕÉ«£¬´óĞ¡£¬×ÖÌå£¬¼Ó´Ö......
+ * æ­¤ç±»å®Œæˆæ–‡å­—ç¼–è¾‘åŠŸèƒ½ï¼Œé¢œè‰²ï¼Œå¤§å°ï¼Œå­—ä½“ï¼ŒåŠ ç²—......
  * 
  * @author qifan.yang
  * 
@@ -53,19 +53,19 @@ public class CustomControlPanel extends JPanel {
 		this.editor = editor;
 		setLayout(new BorderLayout());
 		Box operatorBox = Box.createHorizontalBox();
-		final JButton editBtn = new JButton("¿ªÊ¼±à¼­");
-		bBtn = new JButton("¼Ó´Ö(B)");
-		iBtn = new JButton("ÇãĞ±(I)");// ÇãĞ±Ôİ²»±£´æ0
+		final JButton editBtn = new JButton("å¼€å§‹ç¼–è¾‘");
+		bBtn = new JButton("åŠ ç²—(B)");
+		iBtn = new JButton("å€¾æ–œ(I)");// å€¾æ–œæš‚ä¸ä¿å­˜0
 
-		// ×ÖÌåÑÕÉ«¿Ø¼ş
+		// å­—ä½“é¢œè‰²æ§ä»¶
 		Box fontColorBox = Box.createHorizontalBox();
 		fontColorCombox = new JComboBox(Utils.ColorName.values());
-		fontColorCombox.addItem("ÆäËü...");
+		fontColorCombox.addItem("å…¶å®ƒ...");
 		fontColorBox.setBorder(BorderFactory.createTitledBorder(""));
-		fontColorBox.add(new JLabel("ÑÕÉ«£º"));
+		fontColorBox.add(new JLabel("é¢œè‰²ï¼š"));
 		fontColorBox.add(fontColorCombox);
 
-		// ×ÖÌå´óĞ¡¿Ø¼ş
+		// å­—ä½“å¤§å°æ§ä»¶
 		fontSizeCombox = new JComboBox();
 		Box fontSizeBox = Box.createHorizontalBox();
 		// fontSizeBox.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
@@ -73,17 +73,17 @@ public class CustomControlPanel extends JPanel {
 		for (int i = 10; i < 50; i++) {
 			fontSizeCombox.addItem(i);
 		}
-		fontSizeBox.add(new JLabel("´óĞ¡: "));
+		fontSizeBox.add(new JLabel("å¤§å°: "));
 		fontSizeBox.add(fontSizeCombox);
 
-		// ×ÖÌåÀàĞÍ¿Ø¼ş
+		// å­—ä½“ç±»å‹æ§ä»¶
 		Box fontTypeBox = Box.createHorizontalBox();
 		fontTypeCombox = new JComboBox(Utils.FontName.values());
 		fontTypeBox.setBorder(BorderFactory.createTitledBorder(""));
-		fontTypeBox.add(new JLabel("ÀàĞÍ£º"));
+		fontTypeBox.add(new JLabel("ç±»å‹ï¼š"));
 		fontTypeBox.add(fontTypeCombox);
 
-		insetPicBtn = new JButton("²åÈëÍ¼Æ¬");
+		insetPicBtn = new JButton("æ’å…¥å›¾ç‰‡");
 		operatorBox.add(editBtn);
 		operatorBox.add(bBtn);
 		operatorBox.add(iBtn);
@@ -100,7 +100,7 @@ public class CustomControlPanel extends JPanel {
 	}
 
 	private void initEventDeal() {
-		// ¸Ä±ä´ÖÏ¸
+		// æ”¹å˜ç²—ç»†
 		bBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StyledEditorKit kit = (StyledEditorKit) editor.getEditorKit();
@@ -112,7 +112,7 @@ public class CustomControlPanel extends JPanel {
 			}
 		});
 
-		// ¸ÄÇãĞ±
+		// æ”¹å€¾æ–œ
 		iBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StyledEditorKit kit = (StyledEditorKit) editor.getEditorKit();
@@ -123,13 +123,13 @@ public class CustomControlPanel extends JPanel {
 				setCharacterAttributes(editor, sas, false);
 			}
 		});
-		// ²åÈëÍ¼Æ¬
+		// æ’å…¥å›¾ç‰‡
 		insetPicBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Ñ¡ÔñÒª²åÈëµÄÍ¼Æ¬");
-				fileChooser.setApproveButtonText("È·¶¨");
+				fileChooser.setDialogTitle("é€‰æ‹©è¦æ’å…¥çš„å›¾ç‰‡");
+				fileChooser.setApproveButtonText("ç¡®å®š");
 				// editor.getStyledDocument().getDefaultRootElement();
 				if (editor.getStyledDocument() == null) {
 					System.out.println("editor is NULL ");
@@ -144,7 +144,7 @@ public class CustomControlPanel extends JPanel {
 
 						@Override
 						public String getDescription() {
-							return "Í¼Æ¬";
+							return "å›¾ç‰‡";
 						}
 					});
 					int returnVal = fileChooser.showOpenDialog(getParent());
@@ -158,7 +158,7 @@ public class CustomControlPanel extends JPanel {
 							ImageIcon imageIcon = new ImageIcon(ImageIO.read(selectedFile));
 							imageIcon.setDescription(selectedFile.getPath());
 							editor.insertIcon(imageIcon);
-							// hack ³öÈëÍ¼Æ¬ºó»»ĞĞÊäÈëºº×ÖÊ±£¬Ä¬ÈÏÑÕÉ«¸Ä±ä
+							// hack å‡ºå…¥å›¾ç‰‡åæ¢è¡Œè¾“å…¥æ±‰å­—æ—¶ï¼Œé»˜è®¤é¢œè‰²æ”¹å˜
 							MutableAttributeSet attr = new SimpleAttributeSet();
 							StyleConstants.setForeground(attr, Utils.RIGHT_FONT_COLOR);
 							// Utils.setCharacterAttributes(currentEditor, attr,
@@ -174,7 +174,7 @@ public class CustomControlPanel extends JPanel {
 			}
 		});
 
-		// ¸Ä±äÑÕÉ«£¬Ìá¹©ÑÕÉ«Ñ¡ÔñÃæ°å
+		// æ”¹å˜é¢œè‰²ï¼Œæä¾›é¢œè‰²é€‰æ‹©é¢æ¿
 		fontColorCombox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -192,10 +192,10 @@ public class CustomControlPanel extends JPanel {
 							StyleConstants.setForeground(attr, Color.YELLOW);
 						}
 					} else {
-						// ÑÕÉ«Ãæ°å
-						Color color = JColorChooser.showDialog(getParent(), "ÇëÑ¡ÔñÑÕÉ«", Utils.RIGHT_FONT_COLOR);
+						// é¢œè‰²é¢æ¿
+						Color color = JColorChooser.showDialog(getParent(), "è¯·é€‰æ‹©é¢œè‰²", Utils.RIGHT_FONT_COLOR);
 						if (color != null) {
-							//±£´æºÍ¼ÓÔØ¶ÔÓ¦ĞèÒª´¦Àí
+							//ä¿å­˜å’ŒåŠ è½½å¯¹åº”éœ€è¦å¤„ç†
                             StyleConstants.setForeground(attr, color);
 						}
 					}
@@ -204,7 +204,7 @@ public class CustomControlPanel extends JPanel {
 			}
 		});
 
-		// ¸Ä±ä´óĞ¡
+		// æ”¹å˜å¤§å°
 		fontSizeCombox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {

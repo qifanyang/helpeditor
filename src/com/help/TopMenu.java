@@ -34,10 +34,10 @@ public class TopMenu extends JMenuBar {
     public TopMenu() {
 //        ResourceBundle res = ResourceBundle.getBundle("UI");
         //file menu
-        fileMenu = new JMenu("�ļ�");
-        openFileItem = new JMenuItem("��");
-        saveFileItem = new JMenuItem("����");
-        exitFileItem = new JMenuItem("�˳�");
+        fileMenu = new JMenu("文件");
+        openFileItem = new JMenuItem("打开");
+        saveFileItem = new JMenuItem("保存");
+        exitFileItem = new JMenuItem("退出");
         fileMenu.add(openFileItem);
         fileMenu.add(saveFileItem);
         fileMenu.add(exitFileItem);
@@ -56,16 +56,16 @@ public class TopMenu extends JMenuBar {
         });
         //edit menu
 //        edit = new JMenu(res.getString("edit"));
-        edit = new JMenu("�༭");
+        edit = new JMenu("编辑");
 
 //        tools = new JMenu(res.getString("tools"));
-        tools = new JMenu("����");
-        languageToolsItem = new JMenu("����");
-        lookAndFellToolsItem = new JMenu("������");
+        tools = new JMenu("工具");
+        languageToolsItem = new JMenu("语言");
+        lookAndFellToolsItem = new JMenu("界面风格");
 //        sysCfgToolsItem = new JMenu(res.getString("lookAndFellToolsItem"));
-        JMenuItem sysCfgToolsItem = new JMenuItem("ϵͳ����");
-        zhFileItem = new JMenuItem("����");
-        enFileItem = new JMenuItem("Ӣ��");
+        JMenuItem sysCfgToolsItem = new JMenuItem("系统配置");
+        zhFileItem = new JMenuItem("中文");
+        enFileItem = new JMenuItem("英文");
         languageToolsItem.add(zhFileItem);
         languageToolsItem.add(enFileItem);
 
@@ -100,13 +100,13 @@ public class TopMenu extends JMenuBar {
         windowsItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                Engine.getInstance().setLookAndFeel("windows");
-//                JOptionPane.showMessageDialog(Engine.getInstance(), "风格设置将在下次启动时生效！", "注意", JOptionPane.WARNING_MESSAGE);
+//                JOptionPane.showMessageDialog(Engine.getInstance(), "椋庢牸璁剧疆灏嗗湪涓嬫鍚姩鏃剁敓鏁堬紒", "娉ㄦ剰", JOptionPane.WARNING_MESSAGE);
             }
         });
         javaItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                Engine.getInstance().setLookAndFeel("java");
-//                JOptionPane.showMessageDialog(Engine.getInstance(), "风格设置将在下次启动时生效！", "注意", JOptionPane.WARNING_MESSAGE);
+//                JOptionPane.showMessageDialog(Engine.getInstance(), "椋庢牸璁剧疆灏嗗湪涓嬫鍚姩鏃剁敓鏁堬紒", "娉ㄦ剰", JOptionPane.WARNING_MESSAGE);
             }
         });
 
@@ -123,10 +123,10 @@ public class TopMenu extends JMenuBar {
 //                new OpenDialog();
             }
         });
-        help = new JMenu("����");
+        help = new JMenu("帮助");
 //        help = new JMenu(res.getString("help"));
 //        aboutSoftWareItem = new JMenuItem(res.getString("about"));
-        aboutSoftWareItem = new JMenuItem("����");
+        aboutSoftWareItem = new JMenuItem("关于");
         aboutSoftWareItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                ResourceBundle resourceBundle = ResourceBundle.getBundle("UI");

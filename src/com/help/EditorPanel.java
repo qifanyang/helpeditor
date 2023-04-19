@@ -19,14 +19,14 @@ public class EditorPanel extends JPanel {
 
 	public EditorPanel() {
 		setLayout(new BorderLayout());
-		// ´´½¨±à¼­Ãæ°åÇøÓò
+		// åˆ›å»ºç¼–è¾‘é¢æ¿åŒºåŸŸ
 		editor = new JTextPane();
 		editor.setCaretColor(Color.white);
 		editor.setBackground(Utils.BACKGROUD_COLOR);
 		DataService.getInstance().setEditor(editor);
 		DataService.getInstance().showIndex();
 
-		// ´´½¨±à¼­¿ØÖÆÃæ°å
+		// åˆ›å»ºç¼–è¾‘æ§åˆ¶é¢æ¿
 		JPanel editorControlPanel = new CustomControlPanel(editor);
 
 		JPanel rightPanel = new JPanel();
@@ -34,23 +34,23 @@ public class EditorPanel extends JPanel {
 		rightPanel.add(new JScrollPane(editor), BorderLayout.CENTER);
 		rightPanel.add(editorControlPanel, BorderLayout.NORTH);
 
-		// ³õÊ¼»¯×ó±ßµÄÊ÷ĞÎ½á¹¹
-		CustomTreeNode root = new CustomTreeNode("°ïÖúÏµÍ³");
+		// åˆå§‹åŒ–å·¦è¾¹çš„æ ‘å½¢ç»“æ„
+		CustomTreeNode root = new CustomTreeNode("å¸®åŠ©ç³»ç»Ÿ");
 		CustomTreeNode load = new CustomTreeNode(CustomTreeNode.noFlag);
 		root.add(load);
 		customTree = new CustomTree(root);
-		customTree.addHelpNode(root, new HelpNode("°ïÖúÏµÍ³"));
-		// Ê÷µÄ¸ù½Úµã¶ÔÓ¦Êı¾İÊ÷µÄ¸ù½Úµã
+		customTree.addHelpNode(root, new HelpNode("å¸®åŠ©ç³»ç»Ÿ"));
+		// æ ‘çš„æ ¹èŠ‚ç‚¹å¯¹åº”æ•°æ®æ ‘çš„æ ¹èŠ‚ç‚¹
 		// customTree.setCurrentPane(editor);
 		DataService.getInstance().setCustomTree(customTree);
 		JScrollPane treeScrollPanel = new JScrollPane(customTree);
 		treeScrollPanel.setPreferredSize(new Dimension(HelpEditor.WIDTH / 5, HelpEditor.HEIGHT));
 
-		// TODO TEST Ä¬ÈÏ¼ÓÔØhelp.xml
+		// TODO TEST é»˜è®¤åŠ è½½help.xml
 		/*try {
 			HelpNode helpRootNode = DataService.getInstance().load("help.xml");
 			CustomTreeNode rootNode = customTree.getRootNode();
-			customTree.addHelpNode(rootNode, helpRootNode);// ¸ù½ÚµãÓ³Éä¶ÔÓ¦
+			customTree.addHelpNode(rootNode, helpRootNode);// æ ¹èŠ‚ç‚¹æ˜ å°„å¯¹åº”
 			rootNode.removeAllChildren();
 			customTree.updateAllNode(helpRootNode, rootNode);
 			customTree.updateUI();
@@ -63,8 +63,8 @@ public class EditorPanel extends JPanel {
 
 		DataService.getInstance().startStoreTimer();
 
-		// Ìí¼ÓÒ»Ğ©ÊÂ¼ş´¦Àí
-		// ¹â±êÍ£ÔÚ±à¼­ÇøÓòÄÚ
+		// æ·»åŠ ä¸€äº›äº‹ä»¶å¤„ç†
+		// å…‰æ ‡åœåœ¨ç¼–è¾‘åŒºåŸŸå†…
 		editor.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				// MutableAttributeSet attr = new SimpleAttributeSet();
