@@ -10,10 +10,10 @@ import java.awt.event.ActionListener;
  */
 public class TopMenu extends JMenuBar {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	//    private static final Logger logger = Logger.getLogger(TopMenu.class.getName());
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    //    private static final Logger logger = Logger.getLogger(TopMenu.class.getName());
     private JMenu fileMenu;
     private JMenuItem openFileItem;
     private JMenuItem saveFileItem;
